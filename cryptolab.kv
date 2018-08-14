@@ -1,0 +1,290 @@
+#:import hex kivy.utils.get_color_from_hex
+
+#:import Toolbar kivymd.toolbar.Toolbar
+
+
+# -- Global error class. --
+<GeneralLabelError@Label>:
+    text: ''
+
+    height: '0dp'
+    font_size: self.height / 4.0
+    size_hint_y: None
+    multiline: True
+    markup: True
+
+    canvas.before:
+        Color:
+            rgba: (120, 0, 0, 0.4)
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+
+# -- Login Page classes starts. --
+
+<ImageStyle@Image>:
+    allow_stretch: True
+    keep_ratio: True
+    size_hint_x: None
+    width: self.parent.width
+    height: self.parent.width/self.image_ratio
+
+    pos_hint: {'center_x': 0.5, 'center_y': 0.75}
+
+
+<ButtonStyle@Button>:
+    underline: True
+    background_color: 0, 0, 0, 0
+    size_hint_x: 0.2
+    font_size: self.height / 4.2
+
+
+<TextInputStyle@TextInput>:
+    multiline: False
+    font_size: self.height / 3.0
+    size_hint: (1, 0.05)
+    padding: 40, (self.height / 2.0 - (self.line_height / 2.0) * len(self._lines)), 40, 0
+
+    # left, right
+    #padding_x: self.width / 2.5
+    #padding_left: 100
+
+    # top, bottom
+    #padding_y: [self.height / 2.0 - (self.line_height / 2.0) * len(self._lines), 0]
+
+    # limit to 40 chars
+    input_filter: lambda text, from_undo: text[:40 - len(self.text)]
+
+    background_color: 0, 0, 0, 0
+
+    canvas.before:
+        Color:
+            rgba: (255, 255, 255, 0.8)
+        RoundedRectangle:
+            pos: self.pos
+            size: self.size
+            radius: [50,]
+
+# -- Login Page classes ends. --
+
+
+<LoginScreen>:
+    email_: email
+    password_: password
+
+    error_: error
+
+    BoxLayout:
+        orientation: 'vertical'
+        padding: 70
+        spacing: 45
+
+        ImageStyle:
+            source: "icons/logo.png"
+            size_hint_y: 0.22
+
+        ImageStyle:
+            source: "icons/logo_text.png"
+            size_hint: (0.9, 0.05)
+
+        GeneralLabelError:
+            id: error
+
+        TextInputStyle:
+            id: email
+            hint_text: 'Email'
+
+        TextInputStyle:
+            id: password
+            hint_text: 'Password'
+            password: True
+
+        Button:
+            text: 'LOGIN'
+
+            pos_hint: {'center_x': 0.5, 'center_y': 0.75}
+            size_hint: (0.3, 0.07)
+            background_color: 0, 0, 0, 0
+
+            font_size: self.height / 3.2
+
+            on_press:
+                root.login()
+
+        BoxLayout:
+            orientation: 'horizontal'
+            spacing: 50
+
+            size_hint_y: 0.07
+
+            ButtonStyle:
+                text: 'Remember'
+
+            ButtonStyle:
+                text: 'Registration'
+                on_release:
+                    root.manager.current = "registrationScreen"                 ;
+                    root.clear_all(root.error_, root.email_, root.password_)    ;
+
+
+# -- Registration Page classes starts. --
+
+<LabelRegPageStyle@Label>:
+    text_size: self.size
+    halign: 'left'
+    valign: 'middle'
+    font_size: self.height / 3.0
+
+<TextInputRegPageStyle@TextInput>:
+    size_hint_y: .05
+    font_size: self.height / 3.0
+    foreground_color: (130, 130, 130, 1)
+    multiline: False
+
+    # left, right
+    padding_x: 30
+    # top, bottom
+    padding_y: [self.height / 2.0 - (self.line_height / 2.0) * len(self._lines), 0]
+
+    # limit to 45 chars
+    input_filter: lambda text, from_undo: text[:45 - len(self.text)]
+
+    background_color: 0, 0, 0, 0
+
+    canvas.before:
+        Color:
+            rgba: (255, 255, 255, 0.8)
+        RoundedRectangle:
+            pos: self.pos
+            size: self.size
+            radius: [50,]
+
+# -- Registration Page classes ends. --
+
+
+<RegistrationScreen>:
+    email_: email
+    password_: password
+    confirm_password_: confirm_password
+
+    error_: error
+
+    FloatLayout:
+
+        Button:
+            background_normal: 'icons/back_arrow.png'
+            pos_hint: {'center_x': 0.11, 'center_y': .95}
+            size_hint: (None, None)
+
+            on_release:
+                root.manager.current = "loginScreen" ;
+                root.clear_all(root.error_, root.email_, root.password_, root.confirm_password_)
+
+        Label:
+            text: "Registration"
+            size_hint_y: .001
+            font_size: self.height * 1.5
+
+            pos_hint: {'x': 0.45, 'center_y': .95}
+            size_hint: (.05, .02)
+
+        BoxLayout:
+            orientation: "vertical"
+            size: root.size
+            padding: 70
+
+            pos_hint: {'x': 0, 'y': -.05}
+
+            GeneralLabelError:
+                id: error
+
+            LabelRegPageStyle:
+                text: "Email:"
+                size_hint_y: .05
+
+            TextInputRegPageStyle:
+                id: email
+
+            LabelRegPageStyle:
+                text: "Password:"
+                size_hint_y: .05
+
+            TextInputRegPageStyle:
+                id: password
+                password: True
+
+            LabelRegPageStyle:
+                text: "Confirm password:"
+                size_hint_y: .05
+
+            TextInputRegPageStyle:
+                id: confirm_password
+                password: True
+
+            BoxLayout:
+                size_hint_y: .3
+
+        Button:
+            text: "REGISTRATION"
+            size_hint_y: .07
+            size_hint_x: .3
+
+            background_color: 0, 0, 0, 0
+            pos_hint: {'center_x': .5, 'y': 0.35}
+            font_size: self.height / 2.0
+
+            on_press:
+                root.registration()
+
+
+# -- Main Page classes starts. --
+
+# -- Main Page classes ends. --
+
+
+<MainScreen>:
+    BoxLayout:
+        orientation: "vertical"
+
+        Toolbar:
+            id: action_bar
+            background_color: app.theme_cls.primary_color
+            title: "Here will be current page name."
+            pos_hint: {'center_x': 0.5, 'center_y': 0.25}
+            background_palette: 'Grey'
+            background_hue: '900'
+            left_action_items: [['menu', lambda x: root.nav.toggle_nav_drawer()]]
+            right_action_items:
+                [['cached', lambda x: None],
+                ['magnify', lambda x: None],
+                ['dots-vertical', lambda x: None]]
+
+        Label:
+            text: "Main page."
+
+
+# -- MANAGER starts. --
+<Manager>:
+    id: screen_manager
+
+    login_screen: login_screen
+    registration_screen: registration_screen
+    main_screen: main_screen
+
+    LoginScreen:
+        id: login_screen
+        name: "loginScreen"
+        manager: screen_manager
+
+    RegistrationScreen:
+        id: registration_screen
+        name: "registrationScreen"
+        manager: screen_manager
+
+    MainScreen:
+        id: main_screen
+        name: "mainScreen"
+        manager: screen_manager
+
+# -- MANAGER ends. --
