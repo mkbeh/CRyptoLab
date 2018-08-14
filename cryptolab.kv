@@ -15,17 +15,17 @@ NavigationLayout:
             title: "Here will be Account smth."
 
         NavigationDrawerIconButton:
-            icon: 'checkbox-blank-circle'
+            icon: 'home'
             text: "Последние"
             on_release: app.root.ids.scr_mngr.current = 'last'
 
         NavigationDrawerIconButton:
-            icon: 'checkbox-blank-circle'
+            icon: 'shuffle-variant'
             text: "Мне повезет"
             on_release: app.root.ids.scr_mngr.current = 'lucky'
 
         NavigationDrawerIconButton:
-            icon: 'checkbox-blank-circle'
+            icon: 'calendar-blank'
             text: "По годам"
             on_release: app.root.ids.scr_mngr.current = 'by_years'
 
@@ -34,11 +34,15 @@ NavigationLayout:
         Toolbar:
             id: toolbar
             title: 'Here will be current page name.'
-            md_bg_color: app.theme_cls.primary_color
-            background_palette: 'Primary'
-            background_hue: '500'
+            background_palette: 'Grey'
+            background_hue: '900'
             left_action_items: [['menu', lambda x: app.root.toggle_nav_drawer()]]
-            right_action_items: [['dots-vertical', lambda x: app.root.toggle_nav_drawer()]]
+            right_action_items:
+                [['cached', lambda x: None],
+                ['magnify', lambda x: None],
+                ['apps', lambda x: None],
+                ['dots-vertical', lambda x: None]]
+
         ScreenManager:
             id: scr_mngr
 
