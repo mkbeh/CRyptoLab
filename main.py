@@ -2,21 +2,19 @@
 from kivy.app import App
 from kivy.lang import Builder
 from kivy.properties import ObjectProperty
+from kivy.uix.screenmanager import Screen
 
 from kivymd.theming import ThemeManager
 
 
+class LoginScreen(Screen):
+    pass
+
+
 class CryptoLabApp(App):
     theme_cls = ThemeManager()
-    previous_date = ObjectProperty()
+    # previous_date = ObjectProperty()
     title = "CRyptoLab"
-
-    menu_items = [
-        {'viewclass': 'Login',
-         'text': 'Войти'},
-        {'viewclass': 'Settings_',
-         'text': 'Настройки'},
-    ]
 
     def build(self):
         main_widget = Builder.load_file('cryptolab.kv')

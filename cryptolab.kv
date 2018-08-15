@@ -3,16 +3,6 @@
 #:import MDNavigationDrawer kivymd.navigationdrawer.MDNavigationDrawer
 #:import NavigationLayout kivymd.navigationdrawer.NavigationLayout
 #:import NavigationDrawerToolbar kivymd.navigationdrawer.NavigationDrawerToolbar
-#:import MDDropdownMenu kivymd.menu.MDDropdownMenu
-
-
-# -- Classes for DropDownMenu items starts. --
-<Login@MDMenuItem>:
-    on_release: app.root.ids.scr_mngr.current = 'login'
-
-<Settings_@MDMenuItem>:
-    on_release: app.root.ids.scr_mngr.current = 'settings'
-# -- Classes for DropDownMenu items ends. --
 
 
 NavigationLayout:
@@ -24,6 +14,37 @@ NavigationLayout:
         NavigationDrawerToolbar:
             title: 'Меню'
 
+        NavigationDrawerSubheader:
+            text: "Основное"
+        NavigationDrawerIconButton:
+            icon: 'account'
+            text: "Войти"
+            on_release: app.root.ids.scr_mngr.current = 'login'
+        NavigationDrawerIconButton:
+            icon: 'quadcopter'
+            text: "Агрегаторы"
+            on_release: app.root.ids.scr_mngr.current = 'aggregators'
+
+        NavigationDrawerDivider:
+        NavigationDrawerSubheader:
+            text: "Разделы"
+
+        NavigationDrawerIconButton:
+            icon: 'currency-btc'
+            text: "Криптотека"
+            on_release: app.root.ids.scr_mngr.current = 'cryptoteka'
+
+        NavigationDrawerIconButton:
+            icon: 'history'
+            text: "История просмотров"
+            on_release: app.root.ids.scr_mngr.current = 'view_history'
+
+        NavigationDrawerIconButton:
+            icon: 'calendar-range'
+            text: "Календарь ICO"
+            on_release: app.root.ids.scr_mngr.current = 'calendar_ico'
+
+        NavigationDrawerDivider:
         NavigationDrawerIconButton:
             icon: 'home'
             text: "Последние"
@@ -38,6 +59,11 @@ NavigationLayout:
             icon: 'calendar-blank'
             text: "По годам"
             on_release: app.root.ids.scr_mngr.current = 'by_years'
+        NavigationDrawerDivider:
+        NavigationDrawerIconButton:
+            icon: 'settings'
+            text: 'Настройки'
+            on_release: app.root.ids.scr_mngr.current = 'settings'
 
     BoxLayout:
         orientation: 'vertical'
@@ -49,10 +75,8 @@ NavigationLayout:
             background_hue: '900'
             left_action_items: [['menu', lambda x: app.root.toggle_nav_drawer()]]
             right_action_items:
-                [['cached', lambda x: None],
-                ['magnify', lambda x: None],
-                ['apps', lambda x: None],
-                ['dots-vertical', lambda x: MDDropdownMenu(items=app.menu_items, width_mult=2).open(self)]]
+                [['magnify', lambda x: None],
+                ['cached', lambda x: None]]
 
         ScreenManager:
             id: scr_mngr
@@ -75,11 +99,35 @@ NavigationLayout:
                 MDLabel:
                     text: 'By years.'
 
-            Screen:
+            LoginScreen:
                 name: 'login'
 
                 MDLabel:
                     text: 'Login Page.'
+
+            Screen:
+                name: 'aggregators'
+
+                MDLabel:
+                    text: 'Aggregators page.'
+
+            Screen:
+                name: 'cryptoteka'
+
+                MDLabel:
+                    text: 'cryptoteka Page.'
+
+            Screen:
+                name: 'view_history'
+
+                MDLabel:
+                    text: 'view_history Page.'
+
+            Screen:
+                name: 'calendar_ico'
+
+                MDLabel:
+                    text: 'calendar_ico Page.'
 
             Screen:
                 name: 'settings'
