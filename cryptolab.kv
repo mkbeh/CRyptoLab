@@ -3,6 +3,16 @@
 #:import MDNavigationDrawer kivymd.navigationdrawer.MDNavigationDrawer
 #:import NavigationLayout kivymd.navigationdrawer.NavigationLayout
 #:import NavigationDrawerToolbar kivymd.navigationdrawer.NavigationDrawerToolbar
+#:import MDDropdownMenu kivymd.menu.MDDropdownMenu
+
+
+# -- Classes for DropDownMenu items starts. --
+<Login@MDMenuItem>:
+    on_release: app.root.ids.scr_mngr.current = 'login'
+
+<Settings_@MDMenuItem>:
+    on_release: app.root.ids.scr_mngr.current = 'settings'
+# -- Classes for DropDownMenu items ends. --
 
 
 NavigationLayout:
@@ -12,7 +22,7 @@ NavigationLayout:
         id: nav_drawer
 
         NavigationDrawerToolbar:
-            title: "Here will be Account smth."
+            title: 'Меню'
 
         NavigationDrawerIconButton:
             icon: 'home'
@@ -31,6 +41,7 @@ NavigationLayout:
 
     BoxLayout:
         orientation: 'vertical'
+
         Toolbar:
             id: toolbar
             title: 'Here will be current page name.'
@@ -41,7 +52,7 @@ NavigationLayout:
                 [['cached', lambda x: None],
                 ['magnify', lambda x: None],
                 ['apps', lambda x: None],
-                ['dots-vertical', lambda x: None]]
+                ['dots-vertical', lambda x: MDDropdownMenu(items=app.menu_items, width_mult=2).open(self)]]
 
         ScreenManager:
             id: scr_mngr
@@ -63,3 +74,15 @@ NavigationLayout:
 
                 MDLabel:
                     text: 'By years.'
+
+            Screen:
+                name: 'login'
+
+                MDLabel:
+                    text: 'Login Page.'
+
+            Screen:
+                name: 'settings'
+
+                MDLabel:
+                    text: 'Settings Page.'
