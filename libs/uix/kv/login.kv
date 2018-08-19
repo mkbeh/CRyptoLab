@@ -1,0 +1,66 @@
+# -*- coding: utf-8 -*-
+
+
+<Login>:
+    name: 'login'
+
+    ScrollView:
+        do_scroll_x: False
+
+        BoxLayout:
+            orientation: 'vertical'
+            size_hint_y: None
+            padding: dp(40)
+            spacing: dp(40)
+            height: self.minimum_height
+            size_hint_x: .7
+
+            BoxLayout:
+                size_hint_y: None
+                size_hint_x: None
+                pos_hint: {'center_x': 0.25, 'center_y': 0.5}
+                height: self.minimum_height
+                spacing: dp(20)
+
+                MDFlatButton:
+                    text: 'Восстановить'
+
+                MDFlatButton:
+                    text: 'Регистрация'
+                    on_release:
+                        app.root.ids.manager.current = 'registration'
+
+            MDLabel:
+                font_style: 'Title'
+                theme_text_color: 'Primary'
+                text: 'Email:'
+
+            MDTextField:
+                id: 'email'
+                hint_text: "Введите ваш email."
+                helper_text: "Проверьте правильность введенного email."
+                required: True
+                helper_text_mode: "on_error"
+                font_size: dp(23)
+                max_text_length: 30
+
+            MDLabel:
+                font_style: 'Title'
+                theme_text_color: 'Primary'
+                text: 'Пароль:'
+
+            MDTextField:
+                id: 'password'
+                hint_text: "Введите ваш пароль."
+                helper_text: "Пароля должен быть не менее 6 символов."
+                required: True
+                helper_text_mode: "on_error"
+                font_size: dp(23)
+
+            MDRaisedButton:
+                text: "Войти"
+                elevation_normal: 2
+                opposite_colors: True
+                pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+
+                on_release:

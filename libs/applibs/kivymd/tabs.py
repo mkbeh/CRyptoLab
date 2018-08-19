@@ -341,8 +341,8 @@ class MDTabbedPanel(TabbedPanelBase):
     tab_orientation = OptionProperty('top', options=['top'])  # ,'left','bottom','right'])
 
     # How tabs are displayed
-    tab_display_mode = OptionProperty('text', options=['text', 'icons'])  # ,'both'])
-    _tab_display_height = DictProperty({'text': dp(46), 'icons': dp(46), 'both': dp(72)})
+    tab_display_mode = OptionProperty('text', options=['text', 'data'])  # ,'both'])
+    _tab_display_height = DictProperty({'text': dp(46), 'data': dp(46), 'both': dp(72)})
 
     # Tab background color (leave empty for theme color)
     tab_color = ListProperty([])
@@ -516,7 +516,7 @@ BoxLayout:
         right_action_items: [['magnify', lambda x: ''],['dots-vertical',lambda x:'']]
     MDTabbedPanel:
         id: tab_mgr
-        tab_display_mode:'icons'
+        tab_display_mode:'data'
         MDTab:
             name: 'music'
             text: "Music"

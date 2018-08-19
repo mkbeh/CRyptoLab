@@ -1,0 +1,93 @@
+# -*- coding: utf-8 -*-
+#:import Toolbar kivymd.toolbar.Toolbar
+#:import ThemeManager kivymd.theming.ThemeManager
+#:import MDNavigationDrawer kivymd.navigationdrawer.MDNavigationDrawer
+#:import NavigationLayout kivymd.navigationdrawer.NavigationLayout
+#:import NavigationDrawerToolbar kivymd.navigationdrawer.NavigationDrawerToolbar
+#:import MDTextField kivymd.textfields.MDTextField
+
+#:import NavDrawer libs.uix.baseclasses.navdrawer.NavDrawer
+
+#:import Login libs.uix.baseclasses.login.Login
+#:import Registration libs.uix.baseclasses.registration.Registration
+#:import Search libs.uix.baseclasses.search.Search
+
+
+<StartScreen>:
+    id: nav_layout
+
+    NavDrawer:
+        id: nav_drawer
+
+        BoxLayout:
+            orientation: 'vertical'
+
+            Toolbar:
+                id: action_bar
+                left_action_items: [['menu', lambda x: app.root.toggle_nav_drawer()]]
+                title: app.title
+                left_action_items: [['menu', lambda x: nav_drawer._toggle()]]
+                right_action_items:
+                    [['magnify', lambda x: app.show_search()],
+                    ['cached', lambda x: x]]
+                elevation: 10
+
+            ScreenManager:
+                id: manager
+
+                Screen:
+                    name: 'last'
+
+                    MDLabel:
+                        text: 'Last data.'
+
+                Screen:
+                    name: 'lucky'
+
+                    MDLabel:
+                        text: 'Lucky data.'
+
+                Screen:
+                    name: 'by_years'
+
+                    MDLabel:
+                        text: 'By years.'
+
+                Login:
+                    name: 'login'
+
+                Screen:
+                    name: 'aggregators'
+
+                    MDLabel:
+                        text: 'Aggregators page.'
+
+                Screen:
+                    name: 'cryptoteka'
+
+                    MDLabel:
+                        text: 'cryptoteka Page.'
+
+                Screen:
+                    name: 'view_history'
+
+                    MDLabel:
+                        text: 'view_history Page.'
+
+                Screen:
+                    name: 'calendar_ico'
+
+                    MDLabel:
+                        text: 'calendar_ico Page.'
+
+                Screen:
+                    name: 'settings'
+
+                    MDLabel:
+                        text: 'Settings Page.'
+
+                Registration:
+                    name: 'registration'
+
+                Search:
+                    name: 'search'

@@ -1,0 +1,25 @@
+# -*- coding: utf-8 -*-
+
+<Search>:
+    name: 'search'
+
+    ScrollView:
+        do_scroll_x: False
+
+        BoxLayout:
+            orientation: 'horizontal'
+            size_hint_y: None
+            padding: dp(20)
+            spacing: dp(40)
+            height: self.minimum_height
+            size_hint_x: .7
+
+            MDTextField:
+                id: text_field_error
+                hint_text: "Поиск"
+                font_size: dp(23)
+                max_text_length: 50
+
+            MDIconButton:
+                icon: 'magnify'
+                pos_hint: {'center_x': 0.25, 'center_y': 0.5}

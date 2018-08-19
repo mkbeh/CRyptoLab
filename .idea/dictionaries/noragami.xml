@@ -2,6 +2,7 @@
   <dictionary name="noragami">
     <words>
       <w>aggregators</w>
+      <w>baseclasses</w>
       <w>cryptolab</w>
       <w>cryptoteka</w>
       <w>dropdown</w>
@@ -9,6 +10,8 @@
       <w>mult</w>
       <w>quadcopter</w>
       <w>rypto</w>
+      <w>startscreen</w>
+      <w>toogle</w>
     </words>
   </dictionary>
 </component>

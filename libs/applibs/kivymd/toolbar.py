@@ -32,7 +32,7 @@ Builder.load_string('''
             text_color: root.specific_text_color
             text: root.title
             shorten: True
-            shorten_from: 'right'
+            shorten_from: 'right'    
     BoxLayout:
         id: right_actions
         orientation: 'horizontal'
@@ -44,7 +44,7 @@ Builder.load_string('''
 class Toolbar(ThemableBehavior, RectangularElevationBehavior,
               SpecificBackgroundColorBehavior, BoxLayout):
     left_action_items = ListProperty()
-    """The icons on the left of the Toolbar.
+    """The data on the left of the Toolbar.
 
     To add one, append a list like the following:
 
@@ -55,7 +55,7 @@ class Toolbar(ThemableBehavior, RectangularElevationBehavior,
     """
 
     right_action_items = ListProperty()
-    """The icons on the left of the Toolbar.
+    """The data on the left of the Toolbar.
 
     Works the same way as :attr:`left_action_items`
     """

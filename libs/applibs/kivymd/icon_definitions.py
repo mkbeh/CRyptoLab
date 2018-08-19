@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# These expanded material design icons are maintained by Austin Andrews
+# These expanded material design data are maintained by Austin Andrews
 # (Templarian on Github). They can be found at materialdesignicons.com.
 # 
 # LAST UPDATED: Version 1.7.22

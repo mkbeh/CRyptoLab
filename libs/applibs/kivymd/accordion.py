@@ -4,9 +4,9 @@ from kivy.lang import Builder
 from kivy.properties import StringProperty, ListProperty, OptionProperty, ObjectProperty
 from kivy.uix.accordion import Accordion, AccordionItem
 from kivy.uix.boxlayout import BoxLayout
-from kivymd.backgroundcolorbehavior import SpecificBackgroundColorBehavior
-from kivymd.list import OneLineListItem
-from kivymd.theming import ThemableBehavior
+from libs.applibs.kivymd.backgroundcolorbehavior import SpecificBackgroundColorBehavior
+from libs.applibs.kivymd.list import OneLineListItem
+from libs.applibs.kivymd.theming import ThemableBehavior
 
 
 class MDAccordionItemTitleLayout(ThemableBehavior, BoxLayout):

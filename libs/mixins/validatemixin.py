@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-import utils
+from libs.utils import utils
 
 
 class ValidateMixin(object):
