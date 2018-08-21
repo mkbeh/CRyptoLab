@@ -3,6 +3,10 @@
 
 <Registration>:
     name: 'registration'
+    email_: email
+    password_: password
+    confirm_password_: confirm_password
+    username_: username
 
     ScrollView:
         do_scroll_x: False
@@ -18,12 +22,26 @@
             MDLabel:
                 font_style: 'Headline'
                 theme_text_color: 'Primary'
+                text: 'Имя пользователя:'
+
+            MDTextField:
+                id: username
+                hint_text: "Введите ваше ник."
+                helper_text: "Ник должен быть не менее 6 символов и не более 20"
+                required: True
+                helper_text_mode: "on_error"
+                font_size: dp(23)
+                max_text_length: 30
+
+            MDLabel:
+                font_style: 'Headline'
+                theme_text_color: 'Primary'
                 text: 'Email:'
 
             MDTextField:
-                id: text_field_error
+                id: email
                 hint_text: "Введите ваш email."
-                helper_text: "Two is my least favorite number"
+                helper_text: "Это поле обязательное для заполнения"
                 required: True
                 helper_text_mode: "on_error"
                 font_size: dp(23)
@@ -35,12 +53,13 @@
                 text: 'Пароль:'
 
             MDTextField:
-                id: text_field_error
+                id: password
                 hint_text: "Введите ваш пароль."
                 helper_text: "Пароль должен быть не менее 6 символов."
                 required: True
                 helper_text_mode: "on_error"
                 font_size: dp(23)
+                password: True
 
             MDLabel:
                 font_style: 'Headline'
@@ -48,15 +67,16 @@
                 text: 'Подтверждение пароля:'
 
             MDTextField:
-                id: text_field_error
+                id: confirm_password
                 hint_text: "Введите ваш пароль еще раз."
-                # helper_text: "Введенные пароли не совпадают."
                 required: True
-                # helper_text_mode: "on_error"
                 font_size: dp(23)
+                password: True
 
             MDRaisedButton:
                 text: "Регистрация."
                 elevation_normal: 2
                 opposite_colors: True
                 pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+
+                on_release: root.registration(app.initialize_storage())

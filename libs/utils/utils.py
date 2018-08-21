@@ -1,21 +1,38 @@
 # -*- coding: utf-8 -*-
 import re
 
+from os.path import join
+
 from cryptography.fernet import Fernet
+from kivy.storage.jsonstore import JsonStore
 
 
 # Func which validate fields: email, password and password confirmation.
-def validate_values(email, password, re_password=None):
-    pattern = re.compile(r'\w{4,35}@\w{2,10}\.\w{2,6}')
+# In future write validate funcs for all item.
+def validate_values(email, password, re_password=None, username=None):
+    email_pattern = re.compile(r'\w{4,35}@\w{2,10}\.\w{2,6}')
+    username_pattern = re.compile(r'\w{6,20}')
 
     try:
-        re.match(pattern, email).group()
+        re.match(email_pattern, email).group()
 
         if len(password) < 6:
             return False
 
         if re_password is not None:
             if password != re_password:
+                return False
+
+            try:
+                result = re.match(username_pattern, username).group()
+
+                if len(result) < 6:
+                    return False
+
+                else:
+                    return True
+
+            except AttributeError:
                 return False
 
         return True
@@ -36,7 +53,7 @@ def encrypt_string(string_, cipher_key):
     return encrypted_string
 
 
-# Func which decrypt string
+# Func which decrypt string.
 def decrypt_string(string_, cipher_key):
     # Decrypt string.
     cipher = Fernet(cipher_key)
@@ -46,3 +63,8 @@ def decrypt_string(string_, cipher_key):
     decoded_string = decrypted_string.decode('utf-8')
 
     return decoded_string
+
+
+# Func which return json store.
+def get_store(user_dir):
+    return JsonStore(join(user_dir, 'creds.json'))

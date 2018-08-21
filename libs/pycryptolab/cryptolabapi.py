@@ -28,21 +28,25 @@ class CryptolabApi(object):
         except Exception as e:
             print(e)
 
-    def user_registration(self, email, password, confirm_password):
+    def user_registration(self, email, password, confirm_password, username):
         """Method for registration new user in app."""
 
         headers = {
             'Content-Type': self.content_type,
         }
 
-        template = Template('{"email": "$email", "password": "$password", "confirm_password": "$confirm_password"}')
-        data = template.substitute(email=email, password=password, confirm_password=confirm_password)
+        template = Template('{"email": "$email", "password": "$password", "confirm_password": "$confirm_password", \
+                            "username": "$username"}')
+        data = template.substitute(email=email, password=password, confirm_password=confirm_password, username=username)
+
+        print(template)
+        print(data)
 
         url = self.url + 'user/registration'
 
         try:
             response = requests.post(url=url, headers=headers, data=data, timeout=(3.05, 60), stream=True, verify=False)
-
+            print(response.json())
             return response.json()
         except Exception as e:
             print(e)

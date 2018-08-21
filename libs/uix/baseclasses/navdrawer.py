@@ -23,3 +23,6 @@ class NavDrawer(NavigationLayout):
                 pass
             self._app.list_previous_screens.append(name_current_screen)
 
+    def check_auth(self):
+        pass
+

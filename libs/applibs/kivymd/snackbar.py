@@ -29,7 +29,7 @@ Builder.load_string('''
 <_SnackbarWidget>
     canvas:
         Color:
-            rgb: get_color_from_hex('323232')
+            rgb: get_color_from_hex('000000')
         Rectangle:
             size: self.size
     size_hint_y: None

@@ -9,6 +9,8 @@ from kivy.properties import ObjectProperty
 from libs.applibs.kivymd.theming import ThemeManager
 
 from libs.uix.baseclasses.startscreen import StartScreen
+from libs.mixins.dialogmixin import DialogMixin
+from libs.utils import utils
 
 
 class CryptoLabApp(App):
@@ -36,6 +38,11 @@ class CryptoLabApp(App):
 
         return self.screen
 
+    def initialize_storage(self):
+        user_dir = self.user_data_dir
+
+        return user_dir
+
     @staticmethod
     def load_all_kv_files(directory_kv_files):
         for kv_file in os.listdir(directory_kv_files):
@@ -59,7 +66,6 @@ class CryptoLabApp(App):
     def back_screen(self, event=None):
         if event in (1001, 27):
             if self.manager.current == 'last':
-                self.dialog_exit()
                 return
             try:
                 self.manager.current = self.list_previous_screens.pop()
@@ -71,10 +77,21 @@ class CryptoLabApp(App):
             self.screen.ids.action_bar.left_action_items = [['menu', lambda x: self.nav_drawer._toggle()]]
 
     def show_login(self, *args):
-        self.nav_drawer.toggle_nav_drawer()
-        self.manager.current = 'login'
-        self.screen.ids.action_bar.left_action_items = [['chevron-left', lambda x: self.back_screen(27)]]
-        self.screen.ids.action_bar.title = 'Войти'
+        store = utils.get_store(self.user_data_dir)
+        auth = None
+
+        if store.exists('credentials'):
+            auth = store.get('credentials')['auth']
+
+        if auth is True:
+            DialogMixin().show_logout_dialog("", "Вы уверены , что хотите выйти из вашего аккаунта?"
+                                             " Часть функций может быть недоступна после этого.", self.user_data_dir)
+            self.nav_drawer._toggle()
+        else:
+            self.nav_drawer.toggle_nav_drawer()
+            self.manager.current = 'login'
+            self.screen.ids.action_bar.left_action_items = [['chevron-left', lambda x: self.back_screen(27)]]
+            self.screen.ids.action_bar.title = 'Войти'
 
     def show_aggregators(self, *args):
         self.nav_drawer.toggle_nav_drawer()
@@ -83,7 +100,7 @@ class CryptoLabApp(App):
         self.screen.ids.action_bar.title = 'Агрегаторы'
 
     def show_last(self, *args):
-        self.nav_drawer.toggle_nav_drawer()
+        self.screen.ids.action_bar.left_action_items = [['menu', lambda x: self.nav_drawer._toggle()]]
         self.manager.current = 'last'
         self.screen.ids.action_bar.title = 'Последние'
 

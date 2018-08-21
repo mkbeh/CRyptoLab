@@ -11,37 +11,21 @@ class ValidateMixin(object):
     user_exist = 'Ошибка. Пользователь с таким email\nуже зарегистрирован.'
 
     @staticmethod
-    def clear_all(error, email, password, confirm_password=None):
-        error.text = ''
-        error.size_hint_y = None
-        error.height = '0dp'
-
+    def clear_input_fields(email, password, confirm_password=None, username=None):
         email.text = ''
         password.text = ''
 
         if confirm_password is not None:
             confirm_password.text = ''
+            username.text = ''
 
-    @staticmethod
-    def clear_input_fields(email, password, confirm_password=None):
-        email.text = ''
-        password.text = ''
-
-        if confirm_password is not None:
-            confirm_password.text = ''
-
-    @staticmethod
-    def error(error, text):
-        error.text = text
-        error.size_hint_y = 0.05
-
-    def validate_fields(self, error, email, password, confirm_password=None):
+    def validate_fields(self, email, password, confirm_password=None, username=None):
         try:
-            result = utils.validate_values(email.text, password.text, confirm_password.text)
+            result = utils.validate_values(email.text, password.text, confirm_password.text, username.text)
 
             if result is False:
-                self.error(error, self.incorrect_data)
-                self.clear_input_fields(email, password, confirm_password)
+                self.clear_input_fields(email, password, confirm_password, username)
+                return False
 
             else:
                 return True
@@ -50,8 +34,8 @@ class ValidateMixin(object):
             result = utils.validate_values(email.text, password.text)
 
             if result is False:
-                self.error(error, self.incorrect_data)
                 self.clear_input_fields(email, password)
+                return False
 
             else:
                 return True
