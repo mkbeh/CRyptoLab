@@ -3,8 +3,8 @@
 from kivy.lang import Builder
 from kivy.uix.modalview import ModalView
 from kivy.uix.floatlayout import FloatLayout
-from kivymd.theming import ThemableBehavior
-from kivymd.elevationbehavior import RectangularElevationBehavior
+from libs.applibs.kivymd.theming import ThemableBehavior
+from libs.applibs.kivymd.elevationbehavior import RectangularElevationBehavior
 from kivy.properties import ObjectProperty, ListProperty
 
 Builder.load_string("""

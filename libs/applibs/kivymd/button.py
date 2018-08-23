@@ -20,12 +20,12 @@ from kivy.uix.anchorlayout import AnchorLayout
 from kivy.uix.behaviors import ButtonBehavior
 from kivy.uix.boxlayout import BoxLayout
 from kivy.animation import Animation
-from kivymd.backgroundcolorbehavior import SpecificBackgroundColorBehavior
-from kivymd.ripplebehavior import CircularRippleBehavior, \
+from libs.applibs.kivymd.backgroundcolorbehavior import SpecificBackgroundColorBehavior
+from libs.applibs.kivymd.ripplebehavior import CircularRippleBehavior, \
     RectangularRippleBehavior
-from kivymd.elevationbehavior import CommonElevationBehavior, \
+from libs.applibs.kivymd.elevationbehavior import CommonElevationBehavior, \
     RectangularElevationBehavior, CircularElevationBehavior
-from kivymd.theming import ThemableBehavior
+from libs.applibs.kivymd.theming import ThemableBehavior
 from kivymd.color_definitions import colors
 
 Builder.load_string('''

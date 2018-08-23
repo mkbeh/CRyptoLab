@@ -2,12 +2,14 @@
   <dictionary name="noragami">
     <words>
       <w>aggregators</w>
+      <w>applibs</w>
       <w>baseclasses</w>
       <w>btns</w>
       <w>creds</w>
       <w>cryptolab</w>
       <w>cryptoteka</w>
       <w>dropdown</w>
+      <w>kivymd</w>
       <w>mngr</w>
       <w>mult</w>
       <w>quadcopter</w>

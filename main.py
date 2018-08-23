@@ -94,10 +94,18 @@ class CryptoLabApp(App):
             self.screen.ids.action_bar.title = 'Войти'
 
     def show_aggregators(self, *args):
-        self.nav_drawer.toggle_nav_drawer()
+        if self.nav_drawer.state == 'open':
+            self.nav_drawer.toggle_nav_drawer()
+
         self.manager.current = 'aggregators'
         self.screen.ids.action_bar.left_action_items = [['chevron-left', lambda x: self.back_screen(27)]]
         self.screen.ids.action_bar.title = 'Агрегаторы'
+
+    def show_ico(self, *args):
+        self.nav_drawer.toggle_nav_drawer()
+        self.manager.current = 'ico'
+        self.screen.ids.action_bar.left_action_items = [['chevron-left', lambda x: self.back_screen(27)]]
+        self.screen.ids.action_bar.title = 'ICO'
 
     def show_last(self, *args):
         self.screen.ids.action_bar.left_action_items = [['menu', lambda x: self.nav_drawer._toggle()]]

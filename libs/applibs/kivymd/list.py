@@ -147,9 +147,9 @@ from kivy.properties import ObjectProperty, StringProperty, NumericProperty, \
 from kivy.uix.behaviors import ButtonBehavior
 from kivy.uix.floatlayout import FloatLayout
 from kivy.uix.gridlayout import GridLayout
-import kivymd.material_resources as m_res
-from kivymd.ripplebehavior import RectangularRippleBehavior
-from kivymd.theming import ThemableBehavior
+import libs.applibs.kivymd.material_resources as m_res
+from libs.applibs.kivymd.ripplebehavior import RectangularRippleBehavior
+from libs.applibs.kivymd.theming import ThemableBehavior
 
 Builder.load_string('''
 #:import m_res kivymd.material_resources

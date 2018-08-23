@@ -5,10 +5,10 @@ from kivy.lang import Builder
 from kivy.metrics import dp
 from kivy.properties import ListProperty, StringProperty, OptionProperty
 from kivy.uix.boxlayout import BoxLayout
-from kivymd.backgroundcolorbehavior import SpecificBackgroundColorBehavior
-from kivymd.button import MDIconButton
-from kivymd.theming import ThemableBehavior
-from kivymd.elevationbehavior import RectangularElevationBehavior
+from libs.applibs.kivymd.backgroundcolorbehavior import SpecificBackgroundColorBehavior
+from libs.applibs.kivymd.button import MDIconButton
+from libs.applibs.kivymd.theming import ThemableBehavior
+from libs.applibs.kivymd.elevationbehavior import RectangularElevationBehavior
 
 Builder.load_string('''
 #:import m_res kivymd.material_resources
@@ -32,7 +32,7 @@ Builder.load_string('''
             text_color: root.specific_text_color
             text: root.title
             shorten: True
-            shorten_from: 'right'    
+            shorten_from: 'right'
     BoxLayout:
         id: right_actions
         orientation: 'horizontal'
@@ -44,7 +44,7 @@ Builder.load_string('''
 class Toolbar(ThemableBehavior, RectangularElevationBehavior,
               SpecificBackgroundColorBehavior, BoxLayout):
     left_action_items = ListProperty()
-    """The data on the left of the Toolbar.
+    """The icons on the left of the Toolbar.
 
     To add one, append a list like the following:
 
@@ -55,7 +55,7 @@ class Toolbar(ThemableBehavior, RectangularElevationBehavior,
     """
 
     right_action_items = ListProperty()
-    """The data on the left of the Toolbar.
+    """The icons on the left of the Toolbar.
 
     Works the same way as :attr:`left_action_items`
     """

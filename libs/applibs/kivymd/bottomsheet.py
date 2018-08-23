@@ -49,12 +49,11 @@ from kivy.uix.floatlayout import FloatLayout
 from kivy.uix.gridlayout import GridLayout
 from kivy.uix.modalview import ModalView
 from kivy.uix.scrollview import ScrollView
-from kivymd import images_path
-from kivymd.backgroundcolorbehavior import BackgroundColorBehavior
-from kivymd.label import MDLabel
-from kivymd.list import MDList, OneLineListItem, ILeftBody, \
-    OneLineIconListItem
-from kivymd.theming import ThemableBehavior
+from libs.applibs.kivymd import images_path
+from libs.applibs.kivymd.backgroundcolorbehavior import BackgroundColorBehavior
+from libs.applibs.kivymd.label import MDLabel
+from libs.applibs.kivymd.list import MDList, OneLineListItem, ILeftBody, OneLineIconListItem
+from libs.applibs.kivymd.theming import ThemableBehavior
 
 Builder.load_string('''
 <MDBottomSheet>

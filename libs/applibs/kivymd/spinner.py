@@ -4,7 +4,7 @@ from kivy.lang import Builder
 from kivy.uix.widget import Widget
 from kivy.properties import NumericProperty, ListProperty, BooleanProperty
 from kivy.animation import Animation
-from kivymd.theming import ThemableBehavior
+from libs.applibs.kivymd.theming import ThemableBehavior
 
 Builder.load_string('''
 <MDSpinner>:

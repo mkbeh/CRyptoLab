@@ -9,11 +9,11 @@ from kivy.properties import AliasProperty, BooleanProperty
 from kivy.metrics import dp, sp
 from kivy.animation import Animation
 from kivy.utils import get_color_from_hex
-from kivymd.color_definitions import colors
-from kivymd.icon_definitions import md_icons
-from kivymd.theming import ThemableBehavior
-from kivymd.elevationbehavior import CircularElevationBehavior
-from kivymd.ripplebehavior import CircularRippleBehavior
+from libs.applibs.kivymd.color_definitions import colors
+from libs.applibs.kivymd.icon_definitions import md_icons
+from libs.applibs.kivymd.theming import ThemableBehavior
+from libs.applibs.kivymd.elevationbehavior import CircularElevationBehavior
+from libs.applibs.kivymd.ripplebehavior import CircularRippleBehavior
 from kivy.uix.behaviors import ButtonBehavior
 from kivy.uix.widget import Widget
 

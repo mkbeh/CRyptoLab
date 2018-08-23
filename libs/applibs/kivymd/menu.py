@@ -11,8 +11,8 @@ from kivy.properties import NumericProperty, ListProperty, OptionProperty, \
     StringProperty
 from kivy.uix.behaviors import ButtonBehavior
 from kivy.uix.boxlayout import BoxLayout
-import kivymd.material_resources as m_res
-from kivymd.theming import ThemableBehavior
+import libs.applibs.kivymd.material_resources as m_res
+from libs.applibs.kivymd.theming import ThemableBehavior
 
 Builder.load_string('''
 #:import STD_INC kivymd.material_resources.STANDARD_INCREMENT

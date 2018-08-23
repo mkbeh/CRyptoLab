@@ -7,8 +7,8 @@ from kivy.metrics import sp
 from kivy.properties import NumericProperty, StringProperty, BooleanProperty
 from kivy.properties import OptionProperty, ListProperty
 from kivy.uix.textinput import TextInput
-from kivymd.label import MDLabel
-from kivymd.theming import ThemableBehavior
+from libs.applibs.kivymd.label import MDLabel
+from libs.applibs.kivymd.theming import ThemableBehavior
 
 Builder.load_string('''
 <MDTextField>:

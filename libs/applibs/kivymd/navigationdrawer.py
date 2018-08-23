@@ -14,12 +14,12 @@ from kivy.properties import StringProperty, ObjectProperty, NumericProperty, Lis
     OptionProperty, Clock
 from kivy.uix.boxlayout import BoxLayout
 
-from kivymd import images_path
-from kivymd.elevationbehavior import RectangularElevationBehavior
-from kivymd.icon_definitions import md_icons
-from kivymd.label import MDLabel
-from kivymd.list import BaseListItem, ILeftBody, OneLineListItem, OneLineIconListItem, IRightBody
-from kivymd.theming import ThemableBehavior
+from libs.applibs.kivymd import images_path
+from libs.applibs.kivymd.elevationbehavior import RectangularElevationBehavior
+from libs.applibs.kivymd.icon_definitions import md_icons
+from libs.applibs.kivymd.label import MDLabel
+from libs.applibs.kivymd.list import BaseListItem, ILeftBody, OneLineListItem, OneLineIconListItem, IRightBody
+from libs.applibs.kivymd.theming import ThemableBehavior
 from kivymd.toolbar import Toolbar
 from kivymd.vendor.navigationdrawer import (NavigationDrawer as VendorNavigationDrawer)
 

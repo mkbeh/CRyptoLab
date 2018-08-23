@@ -79,9 +79,14 @@
                     on_release: app.root.ids.manager.current = 'view_history'
 
                 SingleIconItem:
-                    icon: 'calendar-range'
-                    text: "Календарь ICO"
-                    on_release: app.root.ids.manager.current = 'calendar_ico'
+                    icon: 'blur-radial'
+                    text: "ICO"
+                    events_callback: app.show_ico
+
+                SingleIconItem:
+                    icon: 'camera-iris'
+                    text: "Аирдропы"
+                    on_release: app.root.ids.manager.current = 'airdrops'
 
                 SingleIconItem:
                     icon: 'home'

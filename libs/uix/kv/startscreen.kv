@@ -11,6 +11,7 @@
 #:import Login libs.uix.baseclasses.login.Login
 #:import Registration libs.uix.baseclasses.registration.Registration
 #:import Search libs.uix.baseclasses.search.Search
+#:import Ico libs.uix.baseclasses.ico.Ico
 
 
 <StartScreen>:
@@ -29,7 +30,8 @@
                 left_action_items: [['menu', lambda x: nav_drawer._toggle()]]
                 right_action_items:
                     [['magnify', lambda x: app.show_search()],
-                    ['cached', lambda x: x]]
+                    ['cached', lambda x: x],
+                    ['apps', lambda x: app.show_aggregators()]]
                 elevation: 10
 
             ScreenManager:
@@ -74,11 +76,8 @@
                     MDLabel:
                         text: 'view_history Page.'
 
-                Screen:
-                    name: 'calendar_ico'
-
-                    MDLabel:
-                        text: 'calendar_ico Page.'
+                Ico:
+                    name: 'ico'
 
                 Screen:
                     name: 'settings'

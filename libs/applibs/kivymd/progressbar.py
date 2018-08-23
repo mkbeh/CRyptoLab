@@ -3,8 +3,8 @@
 from kivy.lang import Builder
 from kivy.properties import ListProperty, OptionProperty, BooleanProperty
 from kivy.utils import get_color_from_hex
-from kivymd.color_definitions import colors
-from kivymd.theming import ThemableBehavior
+from libs.applibs.kivymd.color_definitions import colors
+from libs.applibs.kivymd.theming import ThemableBehavior
 from kivy.uix.progressbar import ProgressBar
 
 
