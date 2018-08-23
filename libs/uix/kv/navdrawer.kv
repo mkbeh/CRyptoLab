@@ -61,22 +61,22 @@
                     events_callback: app.show_login
 
                 SingleIconItem:
-                    icon: 'quadcopter'
-                    text: "Агрегаторы"
-                    events_callback: app.show_aggregators
+                    icon: 'currency-btc'
+                    text: "Криптотека"
+                    events_callback: app.show_cryptoteka
+
+                SingleIconItem:
+                    icon: 'history'
+                    text: "История просмотров"
+                    events_callback: app.watch_history
 
                 NavigationDrawerSubheader:
                     text: "Разделы"
 
                 SingleIconItem:
-                    icon: 'currency-btc'
-                    text: "Криптотека"
-                    on_release: app.root.ids.manager.current = 'cryptoteka'
-
-                SingleIconItem:
-                    icon: 'history'
-                    text: "История просмотров"
-                    on_release: app.root.ids.manager.current = 'view_history'
+                    icon: 'newspaper'
+                    text: "Новости"
+                    events_callback: app.show_news
 
                 SingleIconItem:
                     icon: 'blur-radial'
@@ -86,7 +86,12 @@
                 SingleIconItem:
                     icon: 'camera-iris'
                     text: "Аирдропы"
-                    on_release: app.root.ids.manager.current = 'airdrops'
+                    events_callback: app.show_airdrops
+
+                SingleIconItem:
+                    icon: 'forum'
+                    text: "BTT"
+                    events_callback: app.show_btt
 
                 SingleIconItem:
                     icon: 'home'
@@ -96,12 +101,12 @@
                 SingleIconItem:
                     icon: 'shuffle-variant'
                     text: "Мне повезет"
-                    on_release: app.root.ids.manager.current = 'lucky'
+                    events_callback: app.show_lucky
 
                 SingleIconItem:
                     icon: 'calendar-blank'
                     text: "По годам"
-                    on_release: app.root.ids.manager.current = 'by_years'
+                    events_callback: app.show_by_years
 
                 NavigationDrawerSubheader:
                     text: "Настройки"

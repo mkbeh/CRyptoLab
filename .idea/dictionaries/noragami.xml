@@ -2,9 +2,11 @@
   <dictionary name="noragami">
     <words>
       <w>aggregators</w>
+      <w>airdops</w>
       <w>applibs</w>
       <w>baseclasses</w>
       <w>btns</w>
+      <w>byyears</w>
       <w>creds</w>
       <w>cryptolab</w>
       <w>cryptoteka</w>
@@ -16,7 +18,9 @@
       <w>rypto</w>
       <w>snackbar</w>
       <w>startscreen</w>
+      <w>subheader</w>
       <w>toogle</w>
+      <w>watchhistory</w>
     </words>
   </dictionary>
 </component>

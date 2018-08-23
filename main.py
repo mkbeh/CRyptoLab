@@ -93,13 +93,23 @@ class CryptoLabApp(App):
             self.screen.ids.action_bar.left_action_items = [['chevron-left', lambda x: self.back_screen(27)]]
             self.screen.ids.action_bar.title = 'Войти'
 
-    def show_aggregators(self, *args):
-        if self.nav_drawer.state == 'open':
-            self.nav_drawer.toggle_nav_drawer()
-
-        self.manager.current = 'aggregators'
+    def show_cryptoteka(self, *args):
+        self.nav_drawer.toggle_nav_drawer()
+        self.manager.current = 'cryptoteka'
         self.screen.ids.action_bar.left_action_items = [['chevron-left', lambda x: self.back_screen(27)]]
-        self.screen.ids.action_bar.title = 'Агрегаторы'
+        self.screen.ids.action_bar.title = 'Криптотека'
+
+    def watch_history(self, *args):
+        self.nav_drawer.toggle_nav_drawer()
+        self.manager.current = 'watch_history'
+        self.screen.ids.action_bar.left_action_items = [['chevron-left', lambda x: self.back_screen(27)]]
+        self.screen.ids.action_bar.title = 'История просмотров'
+
+    def show_news(self, *args):
+        self.nav_drawer.toggle_nav_drawer()
+        self.manager.current = 'news'
+        self.screen.ids.action_bar.left_action_items = [['chevron-left', lambda x: self.back_screen(27)]]
+        self.screen.ids.action_bar.title = 'Новости'
 
     def show_ico(self, *args):
         self.nav_drawer.toggle_nav_drawer()
@@ -107,10 +117,34 @@ class CryptoLabApp(App):
         self.screen.ids.action_bar.left_action_items = [['chevron-left', lambda x: self.back_screen(27)]]
         self.screen.ids.action_bar.title = 'ICO'
 
+    def show_airdrops(self, *args):
+        self.nav_drawer.toggle_nav_drawer()
+        self.manager.current = 'airdrops'
+        self.screen.ids.action_bar.left_action_items = [['chevron-left', lambda x: self.back_screen(27)]]
+        self.screen.ids.action_bar.title = 'Аирдропы'
+
+    def show_btt(self, *args):
+        self.nav_drawer.toggle_nav_drawer()
+        self.manager.current = 'btt'
+        self.screen.ids.action_bar.left_action_items = [['chevron-left', lambda x: self.back_screen(27)]]
+        self.screen.ids.action_bar.title = 'BTT'
+
     def show_last(self, *args):
         self.screen.ids.action_bar.left_action_items = [['menu', lambda x: self.nav_drawer._toggle()]]
         self.manager.current = 'last'
         self.screen.ids.action_bar.title = 'Последние'
+
+    def show_lucky(self, *args):
+        self.nav_drawer.toggle_nav_drawer()
+        self.manager.current = 'lucky'
+        self.screen.ids.action_bar.left_action_items = [['chevron-left', lambda x: self.back_screen(27)]]
+        self.screen.ids.action_bar.title = 'Мне повезет'
+
+    def show_by_years(self, *args):
+        self.nav_drawer.toggle_nav_drawer()
+        self.manager.current = 'by_years'
+        self.screen.ids.action_bar.left_action_items = [['chevron-left', lambda x: self.back_screen(27)]]
+        self.screen.ids.action_bar.title = 'По годам'
 
     def show_settings(self, *args):
         self.nav_drawer.toggle_nav_drawer()

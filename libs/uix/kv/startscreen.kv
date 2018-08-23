@@ -12,6 +12,15 @@
 #:import Registration libs.uix.baseclasses.registration.Registration
 #:import Search libs.uix.baseclasses.search.Search
 #:import Ico libs.uix.baseclasses.ico.Ico
+#:import Cryptoteka libs.uix.baseclasses.cryptoteka.Cryptoteka
+#:import WatchHistory libs.uix.baseclasses.watchhistory.WatchHistory
+#:import News libs.uix.baseclasses.news.News
+#:import Airdrops libs.uix.baseclasses.airdrops.Airdrops
+#:import Last libs.uix.baseclasses.last.Last
+#:import BTT libs.uix.baseclasses.btt.BTT
+#:import Lucky libs.uix.baseclasses.lucky.Lucky
+#:import ByYears libs.uix.baseclasses.byyears.ByYears
+#:import Settings_ libs.uix.baseclasses.settings_.Settings_
 
 
 <StartScreen>:
@@ -37,56 +46,41 @@
             ScreenManager:
                 id: manager
 
-                Screen:
+                Last:
                     name: 'last'
-
-                    MDLabel:
-                        text: 'Last data.'
-
-                Screen:
-                    name: 'lucky'
-
-                    MDLabel:
-                        text: 'Lucky data.'
-
-                Screen:
-                    name: 'by_years'
-
-                    MDLabel:
-                        text: 'By years.'
 
                 Login:
                     name: 'login'
 
-                Screen:
-                    name: 'aggregators'
+                Registration:
+                    name: 'registration'
 
-                    MDLabel:
-                        text: 'Aggregators page.'
-
-                Screen:
+                Cryptoteka:
                     name: 'cryptoteka'
 
-                    MDLabel:
-                        text: 'cryptoteka Page.'
+                WatchHistory:
+                    name: 'watch_history'
 
-                Screen:
-                    name: 'view_history'
-
-                    MDLabel:
-                        text: 'view_history Page.'
+                News:
+                    name: 'news'
 
                 Ico:
                     name: 'ico'
 
-                Screen:
+                Airdrops:
+                    name: 'airdrops'
+
+                BTT:
+                    name: 'btt'
+
+                Lucky:
+                    name: 'lucky'
+
+                ByYears:
+                    name: 'by_years'
+
+                Settings_:
                     name: 'settings'
-
-                    MDLabel:
-                        text: 'Settings Page.'
-
-                Registration:
-                    name: 'registration'
 
                 Search:
                     name: 'search'
