@@ -94,6 +94,11 @@
                     events_callback: app.show_btt
 
                 SingleIconItem:
+                    icon: 'calendar-blank'
+                    text: "События"
+                    events_callback: app.show_events
+
+                SingleIconItem:
                     icon: 'home'
                     text: "Последние"
                     events_callback: app.show_last
@@ -102,11 +107,6 @@
                     icon: 'shuffle-variant'
                     text: "Мне повезет"
                     events_callback: app.show_lucky
-
-                SingleIconItem:
-                    icon: 'calendar-blank'
-                    text: "По годам"
-                    events_callback: app.show_by_years
 
                 NavigationDrawerSubheader:
                     text: "Настройки"

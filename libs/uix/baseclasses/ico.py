@@ -6,7 +6,6 @@ from kivy.properties import ObjectProperty
 class Ico(Screen):
     icobazaar_ = ObjectProperty()
     noname_ = ObjectProperty()
-    noname2_ = ObjectProperty()
 
     def __init__(self, **kwargs):
         super(Ico, self).__init__(**kwargs)
@@ -16,11 +15,10 @@ class Ico(Screen):
         """Callback method which get instance and value and handle switches magic."""
         self.icobazaar_.bind(active=self.callback)
         self.noname_.bind(active=self.callback)
-        self.noname2_.bind(active=self.callback)
-
-        attrs_lst = [self.icobazaar_, self.noname_, self.noname2_]
 
         # Switches magic.
+        attrs_lst = [self.icobazaar_, self.noname_]
+
         if value is True:
             for attr in attrs_lst:
                 if attr.name == instance.name:

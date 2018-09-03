@@ -129,6 +129,12 @@ class CryptoLabApp(App):
         self.screen.ids.action_bar.left_action_items = [['chevron-left', lambda x: self.back_screen(27)]]
         self.screen.ids.action_bar.title = 'BTT'
 
+    def show_events(self, *args):
+        self.nav_drawer.toggle_nav_drawer()
+        self.manager.current = 'events'
+        self.screen.ids.action_bar.left_action_items = [['chevron-left', lambda x: self.back_screen(27)]]
+        self.screen.ids.action_bar.title = 'События'
+
     def show_last(self, *args):
         self.screen.ids.action_bar.left_action_items = [['menu', lambda x: self.nav_drawer._toggle()]]
         self.manager.current = 'last'
@@ -139,12 +145,6 @@ class CryptoLabApp(App):
         self.manager.current = 'lucky'
         self.screen.ids.action_bar.left_action_items = [['chevron-left', lambda x: self.back_screen(27)]]
         self.screen.ids.action_bar.title = 'Мне повезет'
-
-    def show_by_years(self, *args):
-        self.nav_drawer.toggle_nav_drawer()
-        self.manager.current = 'by_years'
-        self.screen.ids.action_bar.left_action_items = [['chevron-left', lambda x: self.back_screen(27)]]
-        self.screen.ids.action_bar.title = 'По годам'
 
     def show_settings(self, *args):
         self.nav_drawer.toggle_nav_drawer()
