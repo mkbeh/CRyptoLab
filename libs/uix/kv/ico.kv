@@ -1,9 +1,12 @@
 #:import MDTabbedPanel libs.applibs.kivymd.tabs.MDTabbedPanel
 #:import MDTab libs.applibs.kivymd.tabs.MDTab
+#:import MDSwitch libs.applibs.kivymd.selectioncontrols.MDSwitch
 
 
 <Ico>:
     name: 'ico'
+    icobazaar_: icobazaar
+    noname_: noname
 
     MDTabbedPanel:
         id: tab_panel
@@ -14,7 +17,7 @@
 
         MDTab:
             name: 'ico_list'
-            text: "Список ICO"
+            text: "ICO"
 
             MDLabel:
                 font_style: 'Body1'
@@ -25,19 +28,55 @@
 
         MDTab:
             name: 'catalogs'
-            text: "Каталоги"
+            text: "Каталог"
 
-            MDLabel:
-                font_style: 'Body1'
-                theme_text_color: 'Primary'
-                text: "Каталог установленных агрегаторов"
-                halign: 'center'
-        MDTab:
-            name: 'repos'
-            text: 'Репозитории'
+            ScrollView:
+                do_scroll_y: True
 
-            MDLabel:
-                font_style: 'Body1'
-                theme_text_color: 'Primary'
-                text: "Список агрегаторов для установки"
-                halign: 'center'
+                BoxLayout:
+                    orientation: 'vertical'
+                    size_hint_y: None
+                    padding: dp(40)
+                    spacing: dp(50)
+                    height: self.minimum_height
+                    size_hint_x: .95
+
+                    MDLabel:
+                        font_style: 'Title'
+                        theme_text_color: 'Primary'
+                        text: "Каталог агрегаторов"
+                        halign: 'center'
+
+                    GridLayout:
+                        cols: 2
+
+                        MDLabel:
+                            font_style: 'Body2'
+                            theme_text_color: 'Primary'
+                            text: "ICO bazaar"
+                            pos_hint: {'center_x': 0, 'center_y': 0.5}
+
+                        MDSwitch:
+                            id: icobazaar
+                            size_hint: None, None
+                            size: dp(36), dp(48)
+                            pos_hint: {'center_x': 0, 'center_y': 0.5}
+                            active: True
+
+                            on_touch_up: print(icobazaar.active)
+
+                    GridLayout:
+                        cols: 2
+
+                        MDLabel:
+                            font_style: 'Body2'
+                            theme_text_color: 'Primary'
+                            text: "No name"
+                            pos_hint: {'center_x': 0, 'center_y': 0.5}
+
+                        MDSwitch:
+                            id: noname
+                            size_hint: None, None
+                            size: dp(36), dp(48)
+                            pos_hint: {'center_x': 0, 'center_y': 0.5}
+                            active: False
