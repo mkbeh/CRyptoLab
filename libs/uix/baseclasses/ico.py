@@ -2,6 +2,8 @@
 from kivy.uix.screenmanager import Screen
 from kivy.properties import ObjectProperty
 
+from libs.utils import utils
+
 
 class Ico(Screen):
     icobazaar_ = ObjectProperty()
@@ -23,14 +25,12 @@ class Ico(Screen):
         if value is True:
             for attr in attrs_lst:
                 if attr.name == instance.name:
-                    self.config.set('ICO', attr.name, value)
-                    self.config.write()
+                    utils.write_into_cfg(self.config, 'ICO', attr.name, value)
                     attrs_lst.remove(attr)
                     self.cls_inst = instance
 
             for attr in attrs_lst:
-                self.config.set('ICO', attr.name, False)
-                self.config.write()
+                utils.write_into_cfg(self.config, 'ICO', attr.name, False)
                 attr.active = False
 
         if value is False:

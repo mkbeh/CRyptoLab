@@ -68,3 +68,9 @@ def decrypt_string(string_, cipher_key):
 # Func which return json store.
 def get_store(user_dir):
     return JsonStore(join(user_dir, 'creds.json'))
+
+
+# Func which write data into config file.
+def write_into_cfg(config, section, key, value):
+    config.set(section, key, value)
+    config.write()
