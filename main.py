@@ -3,8 +3,9 @@ import os
 
 from kivy.app import App
 from kivy.core.window import Window
+from kivy.config import ConfigParser
 from kivy.lang import Builder
-from kivy.properties import ObjectProperty
+from kivy.properties import ObjectProperty, StringProperty
 
 from libs.applibs.kivymd.theming import ThemeManager
 
@@ -17,6 +18,7 @@ class CryptoLabApp(App):
     theme_cls = ThemeManager()
     title = "CRyptoLabX"
     nav_drawer = ObjectProperty()
+    lang = StringProperty('en')
 
     def __init__(self, **kwargs):
         super(CryptoLabApp, self).__init__(**kwargs)
@@ -26,7 +28,29 @@ class CryptoLabApp(App):
         self.window = Window
         self.screen = None
         self.manager = None
+        self.config = ConfigParser()
         self.list_previous_screens = ['last']
+
+    def get_application_config(self, defaultpath='%(appdir)s/%(appname)s.ini'):
+        return super(CryptoLabApp, self).get_application_config(defaultpath)
+
+    def build_config(self, config):
+        """Create settings file cryptolab.ini"""
+        config.adddefaultsection('General')
+        config.setdefault('General', 'language', 'en')
+
+        config.adddefaultsection('ICO')
+        config.setdefault('ICO', 'icobazaar', True)
+        config.setdefault('ICO', 'noname', False)
+
+    def set_values_from_cfg(self):
+        """Set values for variables from settings file cryptolab.ini"""
+        self.config.read(os.path.join(self.directory, 'cryptolab.ini'))
+        self.lang = self.config.get('General', 'language')
+
+    def return_config(self):
+        """Return config instance."""
+        return self.config
 
     def build(self):
         self.load_all_kv_files(os.path.join(self.directory, 'libs', 'uix', 'kv'))

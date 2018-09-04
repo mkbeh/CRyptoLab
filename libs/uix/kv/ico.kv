@@ -80,22 +80,20 @@
 
                         CatSwitch:
                             id: icobazaar
-                            name: 'icobazaar_'
-                            active: True
+                            name: 'icobazaar'
+                            active: root.get_switch_val(app.return_config(), 'icobazaar')
 
                             on_touch_up: root.callback(icobazaar, icobazaar.active)
 
                     CatGridLayout:
 
                         CatLabel:
-                            font_style: 'Body2'
-                            theme_text_color: 'Primary'
                             text: "No name"
                             pos_hint: {'center_x': 0, 'center_y': 0.5}
 
                         CatSwitch:
                             id: noname
-                            name: 'switch2'
-                            active: False
+                            name: 'noname'
+                            active: root.get_switch_val(app.return_config(), 'noname')
 
                             on_touch_up: root.callback(noname, noname.active)
