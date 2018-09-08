@@ -3,16 +3,34 @@ from kivy.uix.screenmanager import Screen
 from kivy.properties import ObjectProperty
 
 from libs.utils import utils
+from libs.customwidgets.ico.cardicobazaar import CardIcoBazaar
 
 
 class Ico(Screen):
     icobazaar_ = ObjectProperty()
     noname_ = ObjectProperty()
+    grid_box = ObjectProperty(None)
 
     def __init__(self, **kwargs):
         super(Ico, self).__init__(**kwargs)
         self.cls_inst = None
         self.config = None
+
+    def on_enter(self, *args):
+        # if self.width > dp(1500):
+        #     self.test.cols = 2
+        #
+        # elif self.width > dp(2000):
+        #     self.test.cols = 3
+
+        self.grid_box.bind(minimum_height=self.grid_box.setter('height'))
+
+        for _ in range(0, 15):
+            card = CardIcoBazaar({'img_src': 'https://icobazaar.com/storage/campaigns/5494/logo.jpg',
+                                  'ico_name': 'Hada DBank', 'updated_date': 'updated 01 January 2018',
+                                  'ico_text': 'Caring and Personal', 'ico_status': 'upcoming', 'ico_date': 'TBA',
+                                  'ico_text_rating': 'A', 'ico_star_rating': 3.5})
+            self.grid_box.add_widget(card)
 
     def callback(self, instance, value):
         """Callback method which get instance and value and handle switches magic."""

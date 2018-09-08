@@ -1,7 +1,9 @@
 # -*- coding: utf-8 -*-
 import re
+import os
+import sys
 
-from os.path import join
+import requests
 
 from cryptography.fernet import Fernet
 from kivy.storage.jsonstore import JsonStore
@@ -67,10 +69,19 @@ def decrypt_string(string_, cipher_key):
 
 # Func which return json store.
 def get_store(user_dir):
-    return JsonStore(join(user_dir, 'creds.json'))
+    return JsonStore(os.path.join(user_dir, 'creds.json'))
 
 
 # Func which write data into config file.
 def write_into_cfg(config, section, key, value):
     config.set(section, key, value)
     config.write()
+
+
+# Func which return path to dir.
+def get_path():
+    path = sys.argv[0]
+    path = os.path.join(os.path.dirname(path), 'data')
+
+    return path
+
