@@ -491,7 +491,7 @@ class MDBottomNavigation(TabbedPanelBase):
 
 if __name__ == '__main__':
     from kivy.app import App
-    from kivymd.theming import ThemeManager
+    from libs.applibs.kivymd.theming import ThemeManager
     
     class TabsApp(App):
         theme_cls = ThemeManager()

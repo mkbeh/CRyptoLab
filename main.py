@@ -93,12 +93,17 @@ class CryptoLabApp(App):
                 return
             try:
                 self.manager.current = self.list_previous_screens.pop()
+                self.screen.ids.action_bar.title = self.title
+
+                if self.manager.current == 'last':
+                    self.screen.ids.action_bar.left_action_items = [['menu', lambda x: self.nav_drawer._toggle()]]
+
             except Exception as e:
                 print(e)
                 self.manager.current = 'last'
 
-            self.screen.ids.action_bar.title = self.title
-            self.screen.ids.action_bar.left_action_items = [['menu', lambda x: self.nav_drawer._toggle()]]
+                self.screen.ids.action_bar.title = self.title
+                self.screen.ids.action_bar.left_action_items = [['menu', lambda x: self.nav_drawer._toggle()]]
 
     def show_login(self, *args):
         store = utils.get_store(self.user_data_dir)

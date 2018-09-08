@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-
 from kivy.lang import Builder
 from kivy.properties import ObjectProperty
 from kivy.uix.image import Image, AsyncImage
@@ -22,12 +21,14 @@ Builder.load_string('''
 
 <CardIcoBazaar>:
     stars_box: stars_box
-    images_box: images_box
+    image_box: image_box
 
     size_hint: .95, None
     pos_hint: {'center_x': 0.5}
     size_hint_y: None
     height: dp(120)
+    
+    on_touch_down: root.switch_to_card_screen(app.manager, app.screen, app)
                     
     BoxLayout:
         padding: (dp(10), dp(10), dp(10), dp(10))
@@ -35,8 +36,8 @@ Builder.load_string('''
         id: main_box
         
         BoxLayout:
-            id: images_box   
-            size_hint_x: 0.0                     
+            id: image_box   
+            size_hint_x: 0.0     
                 
         GridLayout:  
             cols: 3
@@ -120,13 +121,12 @@ Builder.load_string('''
                         size_hint_x: None
                                 
                     Widget:
-                        size_hint_y: .4
-                        
+                        size_hint_y: .4           
 ''')
 
 
 class CardIcoBazaar(MDCard):
-    images_box = ObjectProperty(None)
+    image_box = ObjectProperty(None)
     stars_box = ObjectProperty(None)
     img_updated_src = utils.get_path() + '/images/ico/icobazaar/updated.png'
 
@@ -138,8 +138,22 @@ class CardIcoBazaar(MDCard):
         self.img_status = self.get_status_img_path()    # get status image and add to card.
         self.get_logo()                                 # add downloaded logo images from web to card.
 
-    # def on_touch_down(self, touch):
-    #     print('lol')
+    @staticmethod
+    def switch_to_card_screen(scr_mgr, scr, app_obj):
+        """
+        This method call when the event on touch of card was fired.
+        This method switch to the screen named icobazaar.
+        :param scr_mgr:
+        :param scr:
+        :param app_obj:
+        :return:
+        """
+        if 'ico' not in app_obj.list_previous_screens:
+            app_obj.list_previous_screens.append('ico')
+
+        scr_mgr.current = 'icobazaar'
+        scr.ids.action_bar.left_action_items = [['chevron-left', lambda x: app_obj.back_screen(27)]]
+        scr.ids.action_bar.title = 'Some title'
 
     def get_val(self, key_name):
         """
@@ -184,6 +198,4 @@ class CardIcoBazaar(MDCard):
         :return:
         """
         source = self.get_val('img_src')
-        self.images_box.add_widget(AsyncImage(source=source, size_hint_x=None, mipmap=True), index=0)
-
-
+        self.image_box.add_widget(AsyncImage(source=source, size_hint_x=None, mipmap=True))
