@@ -175,18 +175,8 @@ class CardIcoBazaar(MDCard):
         :return:
         """
         status = self.get_val('ico_status')
-        img = None
 
-        if status == 'upcoming':
-            img = utils.get_path() + '/images/ico/icobazaar/circle_blue.png'
-
-        elif status == 'ongoing':
-            img = utils.get_path() + '/images/ico/icobazaar/circle_green.png'
-
-        elif status == 'ended':
-            img = utils.get_path() + '/images/ico/icobazaar/circle_red.png'
-
-        return img
+        return utils.get_path() + '/images/ico/icobazaar/{}.png'.format(status)
 
     def get_logo(self):
         """
