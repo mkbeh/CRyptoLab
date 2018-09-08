@@ -29,7 +29,8 @@ class Ico(Screen):
             card = CardIcoBazaar({'img_src': 'https://icobazaar.com/storage/campaigns/5494/logo.jpg',
                                   'ico_name': 'Hada DBank', 'updated_date': 'updated 01 January 2018',
                                   'ico_text': 'Caring and Personal', 'ico_status': 'upcoming', 'ico_date': 'TBA',
-                                  'ico_text_rating': 'A', 'ico_star_rating': 3.5})
+                                  'ico_text_rating': 'A', 'ico_star_rating': 3.5,
+                                  'ico_full_desc_link': 'https://icobazaar.com/v2/hada-dbank-1'})
             self.grid_box.add_widget(card)
 
     def callback(self, instance, value):

@@ -138,8 +138,7 @@ class CardIcoBazaar(MDCard):
         self.img_status = self.get_status_img_path()    # get status image and add to card.
         self.get_logo()                                 # add downloaded logo images from web to card.
 
-    @staticmethod
-    def switch_to_card_screen(scr_mgr, scr, app_obj):
+    def switch_to_card_screen(self, scr_mgr, scr, app_obj):
         """
         This method call when the event on touch of card was fired.
         This method switch to the screen named icobazaar.
@@ -153,15 +152,16 @@ class CardIcoBazaar(MDCard):
 
         scr_mgr.current = 'icobazaar'
         scr.ids.action_bar.left_action_items = [['chevron-left', lambda x: app_obj.back_screen(27)]]
-        scr.ids.action_bar.title = 'Some title'
 
-    def get_val(self, key_name):
+        scr.ids.action_bar.title, app_obj.temp_data = self.get_val('ico_name'), self.get_val('ico_full_desc_link')
+
+    def get_val(self, key):
         """
         Method which get key name as param and return data value.
-        :param key_name:
+        :param key:
         :return:
         """
-        return self.data[0][key_name]
+        return self.data[0][key]
 
     def add_stars(self):
         """

@@ -31,6 +31,8 @@ class CryptoLabApp(App):
         self.config = ConfigParser()
         self.list_previous_screens = ['last']
 
+        self.temp_data = None
+
     def get_application_config(self, defaultpath='%(appdir)s/%(appname)s.ini'):
         return super(CryptoLabApp, self).get_application_config(defaultpath)
 
@@ -67,13 +69,15 @@ class CryptoLabApp(App):
 
         return user_dir
 
-    @staticmethod
-    def load_all_kv_files(directory_kv_files):
+    def load_all_kv_files(self, directory_kv_files):
         for kv_file in os.listdir(directory_kv_files):
             kv_file = os.path.join(directory_kv_files, kv_file)
 
             if os.path.isfile(kv_file):
                 Builder.load_file(kv_file)
+
+            else:
+                self.load_all_kv_files(kv_file)
 
     def events_program(self, instance, keyboard, keycode, text, modifiers):
         if keyboard in (1001, 27):
