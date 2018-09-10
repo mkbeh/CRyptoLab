@@ -26,12 +26,12 @@ from libs.applibs.kivymd.ripplebehavior import CircularRippleBehavior, \
 from libs.applibs.kivymd.elevationbehavior import CommonElevationBehavior, \
     RectangularElevationBehavior, CircularElevationBehavior
 from libs.applibs.kivymd.theming import ThemableBehavior
-from kivymd.color_definitions import colors
+from libs.applibs.kivymd.color_definitions import colors
 
 Builder.load_string('''
-#:import md_icons kivymd.icon_definitions.md_icons
-#:import colors kivymd.color_definitions.colors
-#:import MDLabel kivymd.label.MDLabel
+#:import md_icons libs.applibs.kivymd.icon_definitions.md_icons
+#:import colors libs.applibs.kivymd.color_definitions.colors
+#:import MDLabel libs.applibs.kivymd.label.MDLabel
 <BaseButton>:
     size_hint: (None, None)
     anchor_x: 'center'

@@ -28,7 +28,7 @@ Builder.load_string('''
     size_hint_y: None
     height: dp(120)
     
-    on_touch_down: root.switch_to_card_screen(app.manager, app.screen, app)
+    on_touch_down: root.get_app_instances(app.manager, app.screen, app)
                     
     BoxLayout:
         padding: (dp(10), dp(10), dp(10), dp(10))
@@ -138,6 +138,21 @@ class CardIcoBazaar(MDCard):
         self.img_status = self.get_status_img_path()    # get status image and add to card.
         self.get_logo()                                 # add downloaded logo images from web to card.
 
+        self.scr_mgr = None
+        self.scr = None
+        self.app_obj = None
+
+    def on_touch_up(self, touch):
+        if self.collide_point(*touch.pos):
+            self.switch_to_card_screen(self.scr_mgr, self.scr, self.app_obj)
+
+        return super(CardIcoBazaar, self).on_touch_down(touch)
+
+    def get_app_instances(self, scr_mgr, scr, app_obj):
+        self.scr_mgr = scr_mgr
+        self.scr = scr
+        self.app_obj = app_obj
+
     def switch_to_card_screen(self, scr_mgr, scr, app_obj):
         """
         This method call when the event on touch of card was fired.
@@ -150,7 +165,7 @@ class CardIcoBazaar(MDCard):
         if 'ico' not in app_obj.list_previous_screens:
             app_obj.list_previous_screens.append('ico')
 
-        scr_mgr.current = 'icobazaar'
+        scr_mgr.current = 'icobazaar_item'
         scr.ids.action_bar.left_action_items = [['chevron-left', lambda x: app_obj.back_screen(27)]]
 
         scr.ids.action_bar.title, app_obj.temp_data = self.get_val('ico_name'), self.get_val('ico_full_desc_link')

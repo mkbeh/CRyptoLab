@@ -54,6 +54,26 @@
                     height: self.minimum_height
                     padding: (0, dp(20), 0, dp(20))
 
+                    BoxLayout:
+#                        pos_hint: {'center_x':.5}
+#                        size_hint: (.05, None)
+                        size_hint_y: None
+
+                        canvas.before:
+                            Color:
+                                rgba: (120, 0, 0, 0.4)
+                            Rectangle:
+                                pos: self.pos
+                                size: self.size
+
+                        MDRaisedButton:
+                            size_hint: None, None
+                            size: 3 * dp(48), dp(48)
+                            text: 'Open menu'
+                            opposite_colors: True
+#                            pos_hint: {'center_x': 0.1, 'center_y': 0.9}
+#                            on_release: MDDropdownMenu(items=app.menu_items, width_mult=4).open(self)
+
                     GridLayout:
                         id: grid_box
 
