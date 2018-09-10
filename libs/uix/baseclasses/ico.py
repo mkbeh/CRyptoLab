@@ -11,17 +11,33 @@ class Ico(Screen):
     noname_ = ObjectProperty()
     grid_box = ObjectProperty(None)
 
+    last_category_btn = None                            # Last menu button , which was pressed.
+    upcoming = ObjectProperty()
+
     def __init__(self, **kwargs):
         super(Ico, self).__init__(**kwargs)
         self.cls_inst = None
         self.config = None
 
+    def on_event(self, obj):
+        """
+        Event method which fired when clicked on category button.
+        This method change set active color to button and remove active color from last pressed.
+        :param obj:
+        :return:
+        """
+        try:
+            self.upcoming._active = False
+            self.last_category_btn._active = False
+            self.last_category_btn = obj
+        except AttributeError:
+            pass
+
+        obj._active = True
+        self.last_category_btn = obj
+
     def on_enter(self, *args):
-        # if self.width > dp(1500):
-        #     self.test.cols = 2
-        #
-        # elif self.width > dp(2000):
-        #     self.test.cols = 3
+        self.upcoming._active = True
 
         self.grid_box.bind(minimum_height=self.grid_box.setter('height'))
 

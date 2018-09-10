@@ -33,6 +33,7 @@
     icobazaar_: icobazaar
     noname_: noname
     grid_box: grid_box
+    upcoming: upcoming
 
     MDTabbedPanel:
         id: tab_panel
@@ -52,27 +53,45 @@
                     orientation: 'vertical'
                     size_hint_y: None
                     height: self.minimum_height
-                    padding: (0, dp(20), 0, dp(20))
 
-                    BoxLayout:
-#                        pos_hint: {'center_x':.5}
-#                        size_hint: (.05, None)
+                    GridLayout:
                         size_hint_y: None
+                        cols: 3
+                        rows: 2
 
-                        canvas.before:
-                            Color:
-                                rgba: (120, 0, 0, 0.4)
-                            Rectangle:
-                                pos: self.pos
-                                size: self.size
+                        NavigationDrawerIconButton:
+                            text: "Upcoming"
 
-                        MDRaisedButton:
-                            size_hint: None, None
-                            size: 3 * dp(48), dp(48)
-                            text: 'Open menu'
-                            opposite_colors: True
-#                            pos_hint: {'center_x': 0.1, 'center_y': 0.9}
-#                            on_release: MDDropdownMenu(items=app.menu_items, width_mult=4).open(self)
+                            id: upcoming
+                            on_release: root.on_event(upcoming)
+
+                        NavigationDrawerIconButton:
+                            text: "Ongoing"
+
+                            id: ongoing
+                            on_release: root.on_event(ongoing)
+
+                        NavigationDrawerIconButton:
+                            text: "Ended"
+
+                            id: ended
+                            on_release: root.on_event(ended)
+
+                        NavigationDrawerIconButton:
+                            text: "New"
+
+                            id: new
+                            on_release: root.on_event(new)
+
+                        NavigationDrawerIconButton:
+                            text: "All"
+
+                            id: all
+                            on_release: root.on_event(all)
+
+                        NavigationDrawerIconButton:
+                            text: "Open Categories"
+                            icon: 'menu-down'
 
                     GridLayout:
                         id: grid_box

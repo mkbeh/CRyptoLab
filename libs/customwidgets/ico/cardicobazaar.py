@@ -162,13 +162,18 @@ class CardIcoBazaar(MDCard):
         :param app_obj:
         :return:
         """
-        if 'ico' not in app_obj.list_previous_screens:
-            app_obj.list_previous_screens.append('ico')
+        try:
+            if 'ico' not in app_obj.list_previous_screens:
+                app_obj.list_previous_screens.append('ico')
 
-        scr_mgr.current = 'icobazaar_item'
-        scr.ids.action_bar.left_action_items = [['chevron-left', lambda x: app_obj.back_screen(27)]]
+            scr_mgr.current = 'icobazaar_item'
+            scr.ids.action_bar.left_action_items = [['chevron-left', lambda x: app_obj.back_screen(27)]]
 
-        scr.ids.action_bar.title, app_obj.temp_data = self.get_val('ico_name'), self.get_val('ico_full_desc_link')
+            scr.ids.action_bar.title, app_obj.temp_data = self.get_val('ico_name'), self.get_val('ico_full_desc_link')
+
+        except Exception as e:
+            print(e)
+            return
 
     def get_val(self, key):
         """
