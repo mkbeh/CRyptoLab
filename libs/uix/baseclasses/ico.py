@@ -38,7 +38,6 @@ class Ico(Screen):
 
     def on_enter(self, *args):
         self.upcoming._active = True
-
         self.grid_box.bind(minimum_height=self.grid_box.setter('height'))
 
         for _ in range(0, 15):
@@ -50,7 +49,12 @@ class Ico(Screen):
             self.grid_box.add_widget(card)
 
     def callback(self, instance, value):
-        """Callback method which get instance and value and handle switches magic."""
+        """
+        Callback method which get instance and value and handle switches magic.
+        :param instance:
+        :param value:
+        :return:
+        """
         self.icobazaar_.bind(active=self.callback)
         self.noname_.bind(active=self.callback)
 
@@ -73,7 +77,12 @@ class Ico(Screen):
                 instance.active = True
 
     def get_switch_val(self, cfg, parser_name):
-        """Method which get config from *.ini file and return."""
+        """
+        Method which get config from *.ini file and return.
+        :param cfg:
+        :param parser_name:
+        :return:
+        """
         self.config = cfg
 
         return True if cfg.get('ICO', parser_name) == 'True' else False
