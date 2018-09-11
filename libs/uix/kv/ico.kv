@@ -1,6 +1,7 @@
 #:import MDTabbedPanel libs.applibs.kivymd.tabs.MDTabbedPanel
 #:import MDTab libs.applibs.kivymd.tabs.MDTab
 #:import MDSwitch libs.applibs.kivymd.selectioncontrols.MDSwitch
+#:import MDDropdownMenu libs.applibs.kivymd.menu.MDDropdownMenu
 
 #:import hex kivy.utils.get_color_from_hex
 
@@ -61,43 +62,53 @@
 
                         NavigationDrawerIconButton:
                             text: "Upcoming"
+                            badge_text: '12'
 
                             id: upcoming
                             on_release: root.on_event(upcoming)
 
                         NavigationDrawerIconButton:
                             text: "Ongoing"
+                            badge_text: '12'
 
                             id: ongoing
                             on_release: root.on_event(ongoing)
 
                         NavigationDrawerIconButton:
                             text: "Ended"
+                            badge_text: '12'
 
                             id: ended
                             on_release: root.on_event(ended)
 
                         NavigationDrawerIconButton:
                             text: "New"
+                            badge_text: '12'
 
                             id: new
                             on_release: root.on_event(new)
 
                         NavigationDrawerIconButton:
                             text: "All"
+                            badge_text: '12'
 
                             id: all
                             on_release: root.on_event(all)
 
                         NavigationDrawerIconButton:
+                            id: categories
                             text: "Open Categories"
                             icon: 'menu-down'
+
+                            on_release:
+                                root.open_categories_popup();
+                                root.on_event(categories)
 
                     GridLayout:
                         id: grid_box
 
                         cols: 1
-                        spacing: dp(40)
+                        spacing: dp(20)
                         pos_hint: {'center_x':.5}
                         size_hint: (.95, None)
 

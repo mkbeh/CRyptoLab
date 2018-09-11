@@ -5,6 +5,54 @@ from kivy.properties import ObjectProperty
 from libs.utils import utils
 from libs.customwidgets.ico.cardicobazaar import CardIcoBazaar
 
+# Temp here.
+from kivy.uix.popup import Popup
+from kivy.uix.scrollview import ScrollView
+from kivy.lang.builder import Builder
+
+from libs.applibs.kivymd.navigationdrawer import NavigationDrawerIconButton
+
+
+Builder.load_string('''
+<PopupCMContent>:
+    grid: grid
+    do_scroll_y: True
+            
+    GridLayout:
+        cols: 1
+        id: grid
+        size_hint_y: None
+''')
+
+
+class ModifiedNavDrawerIconButton(NavigationDrawerIconButton):
+
+    def on_icon(self, instance, value):
+        pass
+
+
+class PopupCMContent(ScrollView):
+    grid = ObjectProperty(None)
+
+    def __init__(self, **kwargs):
+        super(PopupCMContent, self).__init__(**kwargs)
+
+        self.grid.bind(minimum_height=self.grid.setter('height'))
+
+        for _ in range(20):
+            self.test = ModifiedNavDrawerIconButton(text='Artificial Intelligence            ' + '1300',
+                                                    _active=True)
+            self.grid.add_widget(self.test)
+
+
+class PopupCM(Popup):
+    def __init__(self, **kwargs):
+        super(PopupCM, self).__init__(**kwargs)
+
+        self.size_hint = (None, None)
+        self.auto_dismiss = True
+        self.size = (350, 600)
+
 
 class Ico(Screen):
     icobazaar_ = ObjectProperty()
@@ -13,6 +61,11 @@ class Ico(Screen):
 
     last_category_btn = None                            # Last menu button , which was pressed.
     upcoming = ObjectProperty()
+
+    @staticmethod
+    def open_categories_popup():
+        popup = PopupCM(title='Категории', content=PopupCMContent())
+        popup.open()
 
     def __init__(self, **kwargs):
         super(Ico, self).__init__(**kwargs)

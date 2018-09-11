@@ -24,6 +24,7 @@
       <w>navdraw</w>
       <w>navigationdrawer</w>
       <w>noname</w>
+      <w>popa</w>
       <w>quadcopter</w>
       <w>rypto</w>
       <w>scrollview</w>
@@ -32,6 +33,7 @@
       <w>startscreen</w>
       <w>subheader</w>
       <w>testlogo</w>
+      <w>themable</w>
       <w>toogle</w>
       <w>watchhistory</w>
     </words>
