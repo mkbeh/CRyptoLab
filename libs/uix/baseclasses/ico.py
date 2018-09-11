@@ -5,23 +5,32 @@ from kivy.properties import ObjectProperty
 from libs.utils import utils
 from libs.customwidgets.ico.cardicobazaar import CardIcoBazaar
 
-# Temp here.
+# Temp
 from kivy.uix.popup import Popup
 from kivy.uix.scrollview import ScrollView
 from kivy.lang.builder import Builder
 
 from libs.applibs.kivymd.navigationdrawer import NavigationDrawerIconButton
 
+from libs.applibs.kivymd.theming import ThemableBehavior
+
 
 Builder.load_string('''
 <PopupCMContent>:
-    grid: grid
+    popup_grid_box: popup_grid_box
     do_scroll_y: True
+    
+    canvas.before:
+        Color:
+            rgba: root.theme_cls.bg_dark
+        Rectangle:
+            size: root.size
+            pos: root.pos
             
     GridLayout:
         cols: 1
-        id: grid
-        size_hint_y: None
+        id: popup_grid_box
+        size_hint_y: None 
 ''')
 
 
@@ -31,27 +40,29 @@ class ModifiedNavDrawerIconButton(NavigationDrawerIconButton):
         pass
 
 
-class PopupCMContent(ScrollView):
-    grid = ObjectProperty(None)
+class PopupCMContent(ScrollView, ThemableBehavior):
+    popup_grid_box = ObjectProperty(None)
 
     def __init__(self, **kwargs):
         super(PopupCMContent, self).__init__(**kwargs)
 
-        self.grid.bind(minimum_height=self.grid.setter('height'))
+        self.popup_grid_box.bind(minimum_height=self.popup_grid_box.setter('height'))
 
         for _ in range(20):
-            self.test = ModifiedNavDrawerIconButton(text='Artificial Intelligence            ' + '1300',
-                                                    _active=True)
-            self.grid.add_widget(self.test)
+            self.cat_btn = ModifiedNavDrawerIconButton(text='Artificial Intelligence            ' + '1300',
+                                                       _active=True)
+            self.popup_grid_box.add_widget(self.cat_btn)
 
 
-class PopupCM(Popup):
+class PopupCM(Popup, ThemableBehavior):
     def __init__(self, **kwargs):
         super(PopupCM, self).__init__(**kwargs)
 
         self.size_hint = (None, None)
         self.auto_dismiss = True
         self.size = (350, 600)
+
+        self.separator_color = self.theme_cls.primary_color
 
 
 class Ico(Screen):
