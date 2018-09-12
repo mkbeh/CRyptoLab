@@ -83,8 +83,8 @@ class PopupCMContent(ScrollView, ThemableBehavior):
         Cache.append('popup', 'cat_text', obj.text)
 
         # Get popup obj from cache and dismiss popup.
-        test = Cache.get('main_popup', 'popup_obj')
-        test.dismiss()
+        popup_obj = Cache.get('main_popup', 'popup_obj')
+        popup_obj.dismiss()
 
 
 class PopupCM(Popup, ThemableBehavior):
