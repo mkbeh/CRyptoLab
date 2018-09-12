@@ -34,7 +34,9 @@
     icobazaar_: icobazaar
     noname_: noname
     grid_box: grid_box
+    cats_box: cats_box
     upcoming: upcoming
+    categories: categories
 
     MDTabbedPanel:
         id: tab_panel
@@ -56,6 +58,7 @@
                     height: self.minimum_height
 
                     GridLayout:
+                        id: cats_box
                         size_hint_y: None
                         cols: 3
                         rows: 2
@@ -65,6 +68,7 @@
                             badge_text: '12'
 
                             id: upcoming
+                            name: 'upcoming'
                             on_release: root.on_event(upcoming)
 
                         NavigationDrawerIconButton:
@@ -72,6 +76,7 @@
                             badge_text: '12'
 
                             id: ongoing
+                            name: 'ongoing'
                             on_release: root.on_event(ongoing)
 
                         NavigationDrawerIconButton:
@@ -79,6 +84,7 @@
                             badge_text: '12'
 
                             id: ended
+                            name: 'ended'
                             on_release: root.on_event(ended)
 
                         NavigationDrawerIconButton:
@@ -86,6 +92,7 @@
                             badge_text: '12'
 
                             id: new
+                            name: 'new'
                             on_release: root.on_event(new)
 
                         NavigationDrawerIconButton:
@@ -93,10 +100,13 @@
                             badge_text: '12'
 
                             id: all
+                            name: 'all'
                             on_release: root.on_event(all)
 
                         NavigationDrawerIconButton:
                             id: categories
+                            name: 'categories'
+
                             text: "Open Categories"
                             icon: 'menu-down'
 

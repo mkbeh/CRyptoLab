@@ -3,8 +3,6 @@ import re
 import os
 import sys
 
-import requests
-
 from cryptography.fernet import Fernet
 from kivy.storage.jsonstore import JsonStore
 
@@ -85,3 +83,12 @@ def get_path():
 
     return path
 
+
+# Check on coincidence.
+def coincidence_check(val1, val2):
+    try:
+        res = re.match(val1, val2)
+    except AttributeError:
+        res = None
+
+    return res
