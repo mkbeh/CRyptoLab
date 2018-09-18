@@ -19,21 +19,27 @@ class Ico(Screen):
         self.parser_names = ['icobazaar', 'noname']
         self.icobazaar = Icobazaar()
 
+        self.parser = None
+
+        from kivy.uix.widget import Widget  # just for test
+        self.test = {'icobazaar': Icobazaar(), 'noname': Widget()}
+
     def on_enter(self, *args):
         """
         Event fired when the screen is displayed: the entering animation is complete.
+        Method which load parser data from dependencies of parser config state.
         :param args:
         :return:
         """
-        # Берется парсер , который в конфиге стоит под Тру.
         for parser_name in self.parser_names:
             if self.config.get('ICO', parser_name) == 'True':
-                # Здесь должен создаться нужный объект.
-                print(parser_name, True)
-                try:
-                    self.scrl_view.add_widget(self.icobazaar)
-                except Exception as e:
-                    print(e)
+                self.parser = self.test[parser_name]
+
+        try:
+            self.scrl_view.clear_widgets()
+            self.scrl_view.add_widget(self.parser)
+        except Exception as e:
+            print(e)
 
     def callback(self, instance, value):
         """
@@ -73,3 +79,7 @@ class Ico(Screen):
         self.config = cfg
 
         return True if cfg.get('ICO', parser_name) == 'True' else False
+
+    def load_data(self):
+        self.on_enter(self.__class__)
+
