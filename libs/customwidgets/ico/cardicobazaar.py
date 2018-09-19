@@ -10,7 +10,6 @@ from libs.utils import utils
 
 Builder.load_string('''
 #:import MDCard libs.applibs.kivymd.card.MDCard
-#:import MDSeparator libs.applibs.kivymd.card.MDSeparator
 #:import MDLabel libs.applibs.kivymd.label.MDLabel
 
     
@@ -197,11 +196,10 @@ class CardIcoBazaar(MDCard):
         except TypeError:
             new_starts_amount = int(round(stars_amount, 0))
 
-            for i in range(0, new_starts_amount - 1):
+            for i in range(0, new_starts_amount):
                 self.stars_box.add_widget(Image(source=star_src))
 
-                if i == new_starts_amount - 2:
-                    self.stars_box.add_widget(Image(source=half_star_src))
+            self.stars_box.add_widget(Image(source=half_star_src))
 
     def get_status_img_path(self):
         """

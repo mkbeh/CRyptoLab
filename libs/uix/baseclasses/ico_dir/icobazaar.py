@@ -142,14 +142,32 @@ class Icobazaar(BoxLayout):
 
         self.grid_box.bind(minimum_height=self.grid_box.setter('height'))
 
-        for _ in range(0, 15):
-            card = CardIcoBazaar({'img_src': 'https://icobazaar.com/storage/campaigns/5494/logo.jpg',
-                                  'ico_name': 'Hada DBank', 'updated_date': 'updated 01 January 2018',
-                                  'ico_text': 'Caring and Personal', 'ico_status': 'upcoming', 'ico_date': 'TBA',
-                                  'ico_text_rating': 'A', 'ico_star_rating': 3.5,
-                                  'ico_full_desc_link': 'https://icobazaar.com/v2/hada-dbank-1'})
-            self.grid_box.add_widget(card)
+        import requests
+
+        print(self.last_category_btn)       # при первом заходе стоит в none
+        url = 'http://127.0.0.1:8000/ico/icobazaar&cat={}&limit=15&skip=0'.format('upcoming')
+        print(url)
+
+        r = requests.get(url).content
+        print('response', r)
+        #
+        s = r.decode('utf-8')
+        print(s)
 
         #
+        import json
+        s = json.loads(s)
+        print(s)
+        s = json.loads(s)
+
+        #
+        print(type(s))
+
+        for i in s:
+            print('i', i)
+            card = CardIcoBazaar(i)
+            self.grid_box.add_widget(card)
+
+        # Set categories box object into cache.
         Cache.register('menu_cats_box')
         Cache.append('menu_cats_box', 'cats_box_obj', self.cats_box)
