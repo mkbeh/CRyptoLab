@@ -6,6 +6,7 @@ from kivy.uix.boxlayout import BoxLayout
 
 from libs.customwidgets.ico.cardicobazaar import CardIcoBazaar
 from libs.customwidgets.popupcm import PopupCM, PopupCMContent
+from libs.utils import utils
 
 
 Builder.load_string('''
@@ -131,6 +132,8 @@ class Icobazaar(BoxLayout):
             for cat in cat_items_lst:
                 cat._active = False
 
+        self.gen_cards()
+
     def gen_cards(self):
         """
         Method which generate cards with ico projects description.
@@ -142,30 +145,20 @@ class Icobazaar(BoxLayout):
 
         self.grid_box.bind(minimum_height=self.grid_box.setter('height'))
 
-        import requests
+        # Get active category.
+        cat = self.last_category_btn.text.lower() if self.last_category_btn is not None \
+            else self.upcoming.text.lower()
 
-        print(self.last_category_btn)       # при первом заходе стоит в none
-        url = 'http://127.0.0.1:8000/ico/icobazaar&cat={}&limit=15&skip=0'.format('upcoming')
-        print(url)
+        # Get url content.
+        url = 'http://127.0.0.1:8000/ico/icobazaar&cat={}&limit=15&skip=0'.format(cat)
+        icos_lst = utils.get_url_content(url)
+        # print(icos_lst)
 
-        r = requests.get(url).content
-        print('response', r)
-        #
-        s = r.decode('utf-8')
-        print(s)
+        # Clear widgets and generate cards.
+        self.grid_box.clear_widgets()
 
-        #
-        import json
-        s = json.loads(s)
-        print(s)
-        s = json.loads(s)
-
-        #
-        print(type(s))
-
-        for i in s:
-            print('i', i)
-            card = CardIcoBazaar(i)
+        for ico_data in icos_lst:
+            card = CardIcoBazaar(ico_data)
             self.grid_box.add_widget(card)
 
         # Set categories box object into cache.

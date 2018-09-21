@@ -1,45 +1,64 @@
 # -*- coding: utf-8 -*-
+import functools
+
+import requests
+
+from requests.exceptions import ConnectionError
 from kivy.uix.screenmanager import Screen
 from kivy.properties import ObjectProperty
 
 from libs.utils import utils
 from libs.uix.baseclasses.ico_dir.icobazaar import Icobazaar
+from libs.customwidgets.noconnectionerrorcm import NoConnectionErrorCM
 
 
 class Ico(Screen):
     icobazaar_ = ObjectProperty()
     noname_ = ObjectProperty()
-    ico_list_tab = ObjectProperty(None)
     scrl_view = ObjectProperty(None)
+    ico_list = ObjectProperty(None)
 
     def __init__(self, **kwargs):
         super(Ico, self).__init__(**kwargs)
         self.cls_inst = None
         self.config = None
-        self.parser_names = ['icobazaar', 'noname']
-        self.icobazaar = Icobazaar()
-
+        self.no_connection_error = None
         self.parser = None
 
         from kivy.uix.widget import Widget  # just for test
-        self.test = {'icobazaar': Icobazaar(), 'noname': Widget()}
+        self.parsers_dict = {'icobazaar': Icobazaar, 'noname': Widget}
 
     def on_enter(self, *args):
         """
         Event fired when the screen is displayed: the entering animation is complete.
-        Method which load parser data from dependencies of parser config state.
+        Method which Check connection with server and load parser data from dependencies of parser config state if
+        connection establish , else display widget error.
         :param args:
         :return:
         """
-        for parser_name in self.parser_names:
-            if self.config.get('ICO', parser_name) == 'True':
-                self.parser = self.test[parser_name]
-
+        # Check connection.
         try:
+            requests.get('http://127.0.0.1:8000/api', timeout=(3.05, 27), stream=True)
+
+            for parser_name in self.parsers_dict:
+                if self.config.get('ICO', parser_name) == 'True':
+                    self.parser = self.parsers_dict[parser_name]
+
+            # Add parser data.
+            if self.no_connection_error is not None:
+                self.ico_list.remove_widget(self.no_connection_error)
+                self.no_connection_error = None
+
             self.scrl_view.clear_widgets()
-            self.scrl_view.add_widget(self.parser)
-        except Exception as e:
-            print(e)
+            self.scrl_view.add_widget(self.parser())
+
+        except ConnectionError:
+            self.scrl_view.clear_widgets()
+
+            if self.no_connection_error is None:
+                self.no_connection_error = NoConnectionErrorCM()
+                self.no_connection_error.btn.on_release = functools.partial(self.on_enter, self.__class__)
+                self.ico_list.add_widget(self.no_connection_error, index=0)
 
     def callback(self, instance, value):
         """
@@ -79,7 +98,4 @@ class Ico(Screen):
         self.config = cfg
 
         return True if cfg.get('ICO', parser_name) == 'True' else False
-
-    def load_data(self):
-        self.on_enter(self.__class__)
 

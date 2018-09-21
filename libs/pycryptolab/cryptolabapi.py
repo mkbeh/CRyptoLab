@@ -39,14 +39,10 @@ class CryptolabApi(object):
                             "username": "$username"}')
         data = template.substitute(email=email, password=password, confirm_password=confirm_password, username=username)
 
-        print(template)
-        print(data)
-
         url = self.url + 'user/registration'
 
         try:
             response = requests.post(url=url, headers=headers, data=data, timeout=(3.05, 60), stream=True, verify=False)
-            print(response.json())
             return response.json()
         except Exception as e:
             print(e)

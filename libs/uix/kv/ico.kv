@@ -34,6 +34,7 @@
     icobazaar_: icobazaar
     noname_: noname
     scrl_view: scrl_view
+    ico_list: ico_list
 
     MDTabbedPanel:
         id: tab_panel
@@ -45,8 +46,9 @@
         MDTab:
             name: 'ico_list'
             text: "ICO"
+            id: ico_list
 
-            on_tab_release: root.load_data()
+            on_tab_release: root.on_enter(root.__class__)
 
             ScrollView:
                 do_scroll_y: True

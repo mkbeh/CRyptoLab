@@ -2,6 +2,9 @@
 import re
 import os
 import sys
+import json
+
+import requests
 
 from cryptography.fernet import Fernet
 from kivy.storage.jsonstore import JsonStore
@@ -92,3 +95,19 @@ def coincidence_check(val1, val2):
         res = None
 
     return res
+
+
+def get_url_content(url):
+    """
+    Func which get url as param , send get request and return deserialize content.
+    :param url:
+    :return:
+    """
+    try:
+        response = requests.get(url=url, timeout=(3.05, 27), stream=True).content.decode('utf-8')
+
+        return json.loads(json.loads(response))
+
+    except Exception as e:
+        print(e)
+        return {'error': 'No connection to the server'}
