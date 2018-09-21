@@ -38,19 +38,24 @@ class Ico(Screen):
         """
         # Check connection.
         try:
+            # Test request.
             requests.get('http://127.0.0.1:8000/api', timeout=(3.05, 27), stream=True)
-
-            for parser_name in self.parsers_dict:
-                if self.config.get('ICO', parser_name) == 'True':
-                    self.parser = self.parsers_dict[parser_name]
 
             # Add parser data.
             if self.no_connection_error is not None:
                 self.ico_list.remove_widget(self.no_connection_error)
                 self.no_connection_error = None
 
-            self.scrl_view.clear_widgets()
-            self.scrl_view.add_widget(self.parser())
+            for parser_name in self.parsers_dict:
+                if self.config.get('ICO', parser_name) == 'True':
+                    self.scrl_view.clear_widgets()
+
+                    try:
+                        if parser_name in self.parser:
+                            self.scrl_view.add_widget(self.parser[parser_name])
+                    except TypeError:
+                        self.parser = {parser_name: self.parsers_dict[parser_name]()}
+                        self.scrl_view.add_widget(self.parser[parser_name])
 
         except ConnectionError:
             self.scrl_view.clear_widgets()
