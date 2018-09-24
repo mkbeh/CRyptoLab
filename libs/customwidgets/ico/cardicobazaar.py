@@ -217,5 +217,3 @@ class CardIcoBazaar(MDCard):
         """
         source = self.get_val('img_src')
         self.image_box.add_widget(AsyncImage(source=source, size_hint_x=None, mipmap=True))
-
-        from urllib3 import request
