@@ -15,7 +15,7 @@ import libs.applibs.kivymd.material_resources as m_res
 from libs.applibs.kivymd.theming import ThemableBehavior
 
 Builder.load_string('''
-#:import STD_INC kivymd.material_resources.STANDARD_INCREMENT
+#:import STD_INC libs.applibs.kivymd.material_resources.STANDARD_INCREMENT
 <MDMenuItem>
     size_hint_y: None
     height: dp(48)

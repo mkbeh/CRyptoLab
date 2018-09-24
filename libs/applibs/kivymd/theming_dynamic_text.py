@@ -60,9 +60,10 @@ def get_contrast_text_color(color, use_color_brightness=True):
     else:
         return 0, 0, 0, 1
 
+
 if __name__ == '__main__':
     from kivy.utils import get_color_from_hex
-    from kivymd.color_definitions import colors, text_colors
+    from libs.applibs.kivymd.color_definitions import colors, text_colors
     for c in colors.items():
         if c[0] in ['Light', 'Dark']:
             continue

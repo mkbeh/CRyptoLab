@@ -10,7 +10,7 @@ from kivy.uix.slider import Slider
 
 
 Builder.load_string('''
-#:import Thumb kivymd.selectioncontrols.Thumb
+#:import Thumb libs.applibs.kivymd.selectioncontrols.Thumb
 
 <MDSlider>:
     id: slider

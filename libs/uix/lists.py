@@ -215,7 +215,7 @@ class Lists(BoxLayout):
 
 Builder.load_string(
 '''
-#:import MDList kivymd.list.MDList
+#:import MDList libs.applibs.kivymd.list.MDList
 
 <RightButton>:
     # size_hint_x: None

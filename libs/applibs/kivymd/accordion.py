@@ -67,8 +67,8 @@ class MDAccordionItem(ThemableBehavior, AccordionItem):
 
 
 Builder.load_string('''
-#:import MDLabel kivymd.label.MDLabel
-#:import md_icons kivymd.icon_definitions.md_icons
+#:import MDLabel libs.applibs.kivymd.label.MDLabel
+#:import md_icons libs.applibs.kivymd.icon_definitions.md_icons
 
 <MDAccordion>:
     md_bg_color: self.theme_cls.primary_color
@@ -173,7 +173,7 @@ if __name__ == '__main__':
         def build(self):
             # self.theme_cls.primary_palette = 'Indigo'
             return Builder.load_string("""
-#:import MDLabel kivymd.label.MDLabel
+#:import MDLabel libs.applibs.kivymd.label.MDLabel
 BoxLayout:
     spacing: '64dp'
     MDAccordion:

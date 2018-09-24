@@ -152,7 +152,7 @@ from libs.applibs.kivymd.ripplebehavior import RectangularRippleBehavior
 from libs.applibs.kivymd.theming import ThemableBehavior
 
 Builder.load_string('''
-#:import m_res kivymd.material_resources
+#:import m_res libs.applibs.kivymd.material_resources
 <MDList>
     cols: 1
     size_hint_y: None

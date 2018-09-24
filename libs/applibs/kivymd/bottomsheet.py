@@ -129,7 +129,7 @@ class MDBottomSheet(ThemableBehavior, ModalView):
 
 
 Builder.load_string('''
-#:import md_icons kivymd.icon_definitions.md_icons
+#:import md_icons libs.applibs.kivymd.icon_definitions.md_icons
 <ListBSIconLeft>
     font_style: 'Icon'
     text: u"{}".format(md_icons[root.icon])

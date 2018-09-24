@@ -8,8 +8,8 @@ from libs.applibs.kivymd.elevationbehavior import RectangularElevationBehavior
 from kivy.properties import ObjectProperty, ListProperty
 
 Builder.load_string("""
-#:import MDFlatButton kivymd.button.MDFlatButton
-#:import CircularTimePicker kivymd.vendor.circularTimePicker.CircularTimePicker
+#:import MDFlatButton libs.applibs.kivymd.button.MDFlatButton
+#:import CircularTimePicker libs.applibs.kivymd.vendor.circularTimePicker.CircularTimePicker
 #:import dp kivy.metrics.dp
 <MDTimePicker>:
     size_hint: (None, None)

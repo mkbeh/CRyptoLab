@@ -20,14 +20,14 @@ from libs.applibs.kivymd.icon_definitions import md_icons
 from libs.applibs.kivymd.label import MDLabel
 from libs.applibs.kivymd.list import BaseListItem, ILeftBody, OneLineListItem, OneLineIconListItem, IRightBody
 from libs.applibs.kivymd.theming import ThemableBehavior
-from kivymd.toolbar import Toolbar
-from kivymd.vendor.navigationdrawer import (NavigationDrawer as VendorNavigationDrawer)
+from libs.applibs.kivymd.toolbar import Toolbar
+from libs.applibs.kivymd.vendor.navigationdrawer import (NavigationDrawer as VendorNavigationDrawer)
 
 Builder.load_string("""
-#:import Toolbar kivymd.toolbar.Toolbar
-#:import MDList kivymd.list.MDList
-#:import OneLineIconListItem kivymd.list.OneLineIconListItem
-#:import colors kivymd.color_definitions.colors
+#:import Toolbar libs.applibs.kivymd.toolbar.Toolbar
+#:import MDList libs.applibs.kivymd.list.MDList
+#:import OneLineIconListItem libs.applibs.kivymd.list.OneLineIconListItem
+#:import colors libs.applibs.kivymd.color_definitions.colors
 #:import get_color_from_hex kivy.utils.get_color_from_hex
 #:import ScrollView kivy.uix.scrollview.ScrollView
 #:import Window kivy.core.window.Window

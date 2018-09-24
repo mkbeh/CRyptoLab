@@ -23,9 +23,9 @@ from libs.applibs.kivymd.material_resources import DEVICE_TYPE
 Builder.load_string('''
 #:import Window kivy.core.window.Window
 #:import get_color_from_hex kivy.utils.get_color_from_hex
-#:import MDFlatButton kivymd.button.MDFlatButton
-#:import MDLabel kivymd.label.MDLabel
-#:import DEVICE_TYPE kivymd.material_resources.DEVICE_TYPE
+#:import MDFlatButton libs.applibs.kivymd.button.MDFlatButton
+#:import MDLabel libs.applibs.kivymd.label.MDLabel
+#:import DEVICE_TYPE libs.applibs.kivymd.material_resources.DEVICE_TYPE
 <_SnackbarWidget>
     canvas:
         Color:

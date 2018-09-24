@@ -12,8 +12,8 @@ from libs.applibs.kivymd.elevationbehavior import RectangularElevationBehavior
 from libs.applibs.kivymd.theming import ThemableBehavior
 
 Builder.load_string("""
-#:import MDTabbedPanel kivymd.tabs.MDTabbedPanel
-#:import MDTab kivymd.tabs.MDTab
+#:import MDTabbedPanel libs.applibs.kivymd.tabs.MDTabbedPanel
+#:import MDTab libs.applibs.kivymd.tabs.MDTab
 <ColorSelector>:
     size: dp(40), dp(40)
     pos: self.pos
