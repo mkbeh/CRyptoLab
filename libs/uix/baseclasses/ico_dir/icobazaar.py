@@ -150,12 +150,13 @@ class Icobazaar(BoxLayout):
             else self.upcoming.text.lower()
 
         # Get url content.
-        url = 'http://127.0.0.1:8000/ico/icobazaar&cat={}&limit=15&skip=0'.format(cat)
+        url = 'http://127.0.0.1:8000/ico/icobazaar&cat={}&limit=150&skip=0'.format(cat)
         icos_lst = utils.get_url_content(url)
-        # print(icos_lst)
 
         # Clear widgets and generate cards.
         self.grid_box.clear_widgets()
+        import gc
+        gc.collect()
 
         for ico_data in icos_lst:
             card = CardIcoBazaar(ico_data)

@@ -76,6 +76,7 @@ class CommonElevationBehavior(object):
     def _update_shadow(self, *args):
         raise NotImplemented
 
+
 class RectangularElevationBehavior(CommonElevationBehavior):
     def _update_shadow(self, *args):
         if self.elevation > 0:

@@ -49,6 +49,8 @@ class Ico(Screen):
             for parser_name in self.parsers_dict:
                 if self.config.get('ICO', parser_name) == 'True':
                     self.scrl_view.clear_widgets()
+                    import gc
+                    gc.collect()
 
                     try:
                         if parser_name in self.parser:
@@ -59,6 +61,8 @@ class Ico(Screen):
 
         except ConnectionError:
             self.scrl_view.clear_widgets()
+            import gc
+            gc.collect()
 
             if self.no_connection_error is None:
                 self.no_connection_error = NoConnectionErrorCM()

@@ -2,5 +2,75 @@
 
 
 <News>:
-    Label:
-        text: 'News Page.'
+    name: 'news'
+
+    bits_media: bits_media
+    noname_: noname
+    scrl_view: scrl_view
+    ico_list: ico_list
+
+    MDTabbedPanel:
+        id: tab_panel
+        tab_display_mode:'text'
+        tab_color: 0, 0, 0, 1
+        tab_text_color_active: tab_panel.theme_cls.primary_dark
+        tab_indicator_color: tab_panel.theme_cls.primary_dark
+
+        MDTab:
+            name: 'news_list'
+            text: "News"
+            id: ico_list
+
+            on_tab_release: root.on_enter(root.__class__)
+
+            ScrollView:
+                do_scroll_y: True
+                id: scrl_view
+
+        MDTab:
+            name: 'catalogs'
+            text: "Каталог"
+
+            ScrollView:
+                do_scroll_y: True
+
+                BoxLayout:
+                    orientation: 'vertical'
+                    size_hint_y: None
+                    padding: dp(40)
+                    spacing: dp(65)
+                    height: self.minimum_height
+                    size_hint_x: .95
+
+                    MDLabel:
+                        font_style: 'Title'
+                        theme_text_color: 'Primary'
+                        text: "Каталог агрегаторов"
+                        halign: 'center'
+
+                    GridLayout:
+                        cols: 2
+                        padding: dp(5)
+
+                        CatLabel:
+                            text: "Bits media"
+
+                        CatSwitch:
+                            id: bits_media
+                            name: 'bits_media'
+                            active: root.get_switch_val(app.return_config(), 'bits_media')
+
+                            on_touch_up: root.callback(bits_media, bits_media.active)
+
+                    CatGridLayout:
+
+                        CatLabel:
+                            text: "No name"
+                            pos_hint: {'center_x': 0, 'center_y': 0.5}
+
+                        CatSwitch:
+                            id: noname
+                            name: 'noname'
+                            active: root.get_switch_val(app.return_config(), 'noname')
+
+                            on_touch_up: root.callback(noname, noname.active)

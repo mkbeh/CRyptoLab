@@ -45,6 +45,10 @@ class CryptoLabApp(App):
         config.setdefault('ICO', 'icobazaar', True)
         config.setdefault('ICO', 'noname', False)
 
+        config.adddefaultsection('News')
+        config.setdefault('News', 'bits_media', True)
+        config.setdefault('News', 'noname', False)
+
     def set_values_from_cfg(self):
         """Set values for variables from settings file cryptolab.ini"""
         self.config.read(os.path.join(self.directory, 'cryptolab.ini'))
